@@ -1,20 +1,26 @@
-const apiUrl = "https://api-adresse.data.gouv.fr/search/?q=paris&type=street"
+const overpassQuery = `
+  [out:json];
+  area["name"="Lyon"]->.searchArea;
+  ( 
+      way["name"]["highway"~"residential|tertiary|primary|secondary|unclassified|road|living_street"](area.searchArea);
+  );
+  out body;
+`;
 
-async function getLyonStreets(apiUrl) {
-	let response = await fetch(apiUrl);
-	let data = await response.json();
+const overpassApiUrl = 'https://overpass-api.de/api/interpreter';
 
-	if (data.error) {
-		throw new Error('Erreur lors de la récupération des noms de rue.');
-	}
-
-	return (data);
-}
-
-getLyonStreets(apiUrl)
-	.then((data) => {
-		console.log(data);
+fetch(overpassApiUrl, {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/x-www-form-urlencoded',
+	},
+	body: `data=${encodeURIComponent(overpassQuery)}`,
+})
+	.then(response => response.json())
+	.then(data => {
+		const uniqueNames = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
+		console.log(uniqueNames);
 	})
-	.catch((error) => {
+	.catch(error => {
 		console.error(error);
-	})
+	});
