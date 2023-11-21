@@ -1,43 +1,76 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-AOS.init();
+import { readFileSync } from 'fs';
+const readJSON = readFileSync('./listePrenoms.json');
+const objectsJSON = JSON.parse(readJSON);
 
-let scrollRef = 0;
+console.log(objectsJSON);
 
-window.addEventListener('scroll', function() {
-  // increase value up to 10, then refresh AOS
-  scrollRef <= 10 ? scrollRef++ : AOS.refresh();
-});
-
-const overpassQuery = `
-[out:json][timeout:2500];
+const queryRequest = `
+[out:json];
 area(id:3600120965)->.searchArea;
 (
   way["highway"]["name"](area.searchArea);
 );
-for (t["name"])
-{
-  make street name=_.val;
-  out;
-}
+out;
 `;
 
-fetch("https://overpass-api.de/api/interpreter", {
-	method: 'POST',
-	mode: 'cors',
-	body: "data=" + encodeURIComponent(overpassQuery)
-})
-	.then((response) => {
-		if (!response.ok) {
-			throw new Error('Network response was not ok');
+var uniqueStreet;
+
+function getStreetArray(queryRequest) {
+	fetch("https://overpass-api.de/api/interpreter", {
+		method: 'POST',
+		mode: 'cors',
+		body: "data=" + encodeURIComponent(queryRequest)
+	})
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			return (response.json());
+		})
+		.then((data) => {
+			uniqueStreet = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
+			console.log(uniqueStreet);
+			return (uniqueStreet);
+		})
+		.catch(error => {
+			console.error('There was a problem with the fetch operation:', error);
+		});
+}
+
+getStreetArray(queryRequest);
+
+function countGenre() {
+	let countM = parseInt(0);
+	let countF = parseInt(0);
+	let countO = parseInt(0);
+	let streets = getStreetArray(queryRequest);
+	let otherTab = [];
+
+	for (let i = 0; i < streets.length; i++) {
+		let tempTab = streets[i].split(' ');
+		for (let j = 0; j < tempTab.length; j++) {
+			if (tempTab[j] === "Rue" || tempTab[j] === "de" ||
+				tempTab[j] === "la" || tempTab[j] === "le" ||
+				tempTab[j] === "du" || tempTab[j] === "Avenue" ||
+				tempTab[j] === "Chemin" || tempTab[j] === "Route" ||
+				tempTab[j] === "Tunnel") {
+				continue;
+			}
+			for (let k = 0; k < objectsJSON.length; k++) {
+				if (objectsJSON[k]['01_prenom'] === tempTab[j]) {
+					if (objectsJSON[k]['02_genre'] === 'm') {
+						countM += 1;
+					} else if (objectsJSON[k]['02_genre'] === 'f') {
+						countF += 1;
+					} else {
+						otherTab.push(streets[i])
+						countO += 1;
+					}
+				}
+			}
 		}
-		return response.json();
-	})
-	.then((data) => {
-		console.log(data);
-		const uniqueNames = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
-		console.log(uniqueNames);
-	})
-	.catch(error => {
-		console.error('There was a problem with the fetch operation:', error);
-	});
+	}
+	return (otherTab);
+}
+
+countGenre();
