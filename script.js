@@ -1,6 +1,12 @@
 import { readFileSync } from 'fs';
 const readJSON = readFileSync('./listePrenoms.json');
 const objectsJSON = JSON.parse(readJSON);
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init({
+	once: false, 
+  mirror: false, 
+});
 
 console.log(objectsJSON);
 
