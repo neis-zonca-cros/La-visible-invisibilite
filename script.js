@@ -1,14 +1,15 @@
-import { readFileSync } from 'fs';
-const readJSON = readFileSync('./listePrenoms.json');
-const objectsJSON = JSON.parse(readJSON);
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-AOS.init({
-	once: false, 
-  mirror: false, 
-});
+var objectsJSON;
 
-console.log(objectsJSON);
+await fetch('listePrenoms.json')
+	.then(response => {
+		response.json()
+	})
+	.then(data => {
+		objectsJSON = data;
+		console.log(objectsJSON);
+	})
+	.catch(error => console.error('Error loading listePrenoms.json:', error));
+
 
 const queryRequest = `
 [out:json];

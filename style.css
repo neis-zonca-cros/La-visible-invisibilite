@@ -1,29 +1,33 @@
 #bus {
-    max-width: 90px;
-    height: auto;
-    justify-content: center;
-    align-items: baseline;
-    display: flex;
+	max-width: 90px;
+	height: auto;
+	justify-content: center;
+	align-items: baseline;
+	display: flex;
 
-    
+
 }
 
 
 
 body {
-    margin: 0; 
-    padding: 0;
-    overflow-x: hidden;
-    background-image: url('img/Background.jpg');
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	background-image: url('img/Background.jpg');
 }
 
 .slide {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 100px;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 100px;
 
 }
 
+h1 {
+	font-weight: 100;
+	font-size: 28px;
+}
