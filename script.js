@@ -1,3 +1,14 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
+let scrollRef = 0;
+
+window.addEventListener('scroll', function() {
+  // increase value up to 10, then refresh AOS
+  scrollRef <= 10 ? scrollRef++ : AOS.refresh();
+});
+
 const overpassQuery = `
 [out:json][timeout:2500];
 area(id:3600120965)->.searchArea;

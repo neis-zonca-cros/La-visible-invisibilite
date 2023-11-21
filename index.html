@@ -5,13 +5,50 @@
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 	<body">
-		
-		<div class = "containeur">
+		<script src="./script.js"></script>
 			<div class ="blocVertical">
-				<div class="slide one">Slide 1</div>
-					<div class="text"><h1></h1></div>
-				<div class="slide two">Slide 2</div>
-				<div class="slide three">Slide 3</div>
+		    
+				<div class="slide one">
+					<div class="container"
+						 data-aos-id="slide two"
+						 data-aos="flip-left" 	
+						 data-aos="fade-up"
+						 data-aos-easing="ease-in-out"
+						 data-aos-anchor-placement="top-center">
+			    <font size=6pt>
+				<h1>Bienvenue à Lyon</h1>
+			    </font>
+			    </div>
+			</div>
+      
+				<div class="slide two">
+					<div class = "containeur" 
+					 data-aos-id="slide two"
+		             data-aos="flip-left" 	
+		             data-aos="fade-up"
+		             data-aos-easing="ease-in-out"
+		             data-aos-anchor-placement="top-center">
+			    <font size=5pt>
+			    <h2>/relier pourcentage/ des rues sont nommées en référence à des individus portant des noms d'hommes</h2>
+		        </font>
+				</div>
+			</div>
+
+				<div class="slide three">
+                    <div class = "container"
+					 data-aos-id="slide two"
+					 data-aos="flip-left"
+					 data-aos="fade-up"
+					 data-aos-easing="ease-in-out"
+					 data-aos-anchor-placement="top-center"
+			    font size=5pt>
+				<h3>/relier pourcentage/ des rues sont nommées en référence à des individus portant des noms de femmes</h3>
+				</font>
+				</div>
+			</div>
+
+
+
 				<div class="slide four">Slide 4</div>
 			</div>
 		</div>
@@ -22,9 +59,8 @@
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js'></script>
 		<script>AOS.init();</script>
-		<script src="./script.js"></script>
-
-	</body>
+			
+		</body>
 
 
 </html>
