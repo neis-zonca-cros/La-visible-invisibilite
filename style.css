@@ -28,7 +28,7 @@ h1 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
     z-index: 1;
-    color: #d0b298;
+    color: #f0d9c6;
     text-align: center;
 }
 
@@ -36,7 +36,7 @@ h2 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
     z-index: 1;
-    color: #d0b298;
+    color: #f0d9c6;
     text-align: center;
 }
 
@@ -45,7 +45,7 @@ h3 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
     z-index: 1;
-    color: #d0b298;
+    color: #f0d9c6;
     text-align: center;
 
 }
@@ -54,7 +54,7 @@ h4 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
     z-index: 1;
-    color: #d0b298;
+    color: #f0d9c6;
     text-align: center;
 
 }
@@ -63,7 +63,7 @@ h5 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
     z-index: 1;
-    color: #d0b298;
+    color: #f0d9c6;
     text-align: center;
 
 }
