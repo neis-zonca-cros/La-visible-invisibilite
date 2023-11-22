@@ -80,8 +80,8 @@ h5 {
 }
 
 #carre {
-    height:0;
-    width:25%;
+    height:10vw;
+    width:10vh;
     margin:30px auto;
     background : rgb(136, 127, 56);
     opacity: 0.3;
