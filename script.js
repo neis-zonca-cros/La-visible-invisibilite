@@ -5,8 +5,8 @@ await fetch('listePrenoms.json')
 		response.json()
 	})
 	.then(data => {
+		console.log(data);
 		objectsJSON = data;
-		console.log(objectsJSON);
 	})
 	.catch(error => console.error('Error loading listePrenoms.json:', error));
 
@@ -60,7 +60,11 @@ function countGenre() {
 				tempTab[j] === "la" || tempTab[j] === "le" ||
 				tempTab[j] === "du" || tempTab[j] === "Avenue" ||
 				tempTab[j] === "Chemin" || tempTab[j] === "Route" ||
-				tempTab[j] === "Tunnel") {
+				tempTab[j] === "Tunnel" || tempTab[j] === "Allée" ||
+				tempTab[j] === "Place" || tempTab[j] === "Voie" ||
+				tempTab[j] === "Boulevard" || tempTab[j] === "des" ||
+				tempTab[j] === "Impasse" || tempTab[j] === "Quai" ||
+				tempTab[j] === "Grande" || tempTab[j] === "et") {
 				continue;
 			}
 			for (let k = 0; k < objectsJSON.length; k++) {
