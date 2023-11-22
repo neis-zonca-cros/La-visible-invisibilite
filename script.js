@@ -1,5 +1,6 @@
 var objectsJSON;
 var uniqueStreets;
+var numberOfStreets;
 const queryRequest = `
 [out:json];
 area(id:3600120965)->.searchArea;
@@ -40,8 +41,10 @@ async function getStreetArray(queryRequest) {
 		})
 		.then((data) => {
 			if (data && data.elements) {
-				test = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
-				return (test);
+				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
+				numberOfStreets = uniqueStreets.length;
+				document.getElementById("numberOfStreets").innerHTML = numberOfStreets;
+				return (uniqueStreets);
 			} else {
 				throw new Error('Invalid Data Format');
 			}
@@ -92,6 +95,7 @@ async function countGenre() {
 	}
 	return (otherTab);
 }
+
 
 let result = await countGenre();
 console.log(result);
