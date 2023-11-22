@@ -19,8 +19,8 @@ await fetch('listePrenoms.json')
 		return response.json()
 	})
 	.then(data => {
-		console.log(data);
 		objectsJSON = data;
+		console.log(objectsJSON);
 	})
 	.catch(error => console.error('Error loading listePrenoms.json:', error));
 
@@ -60,6 +60,7 @@ async function countGenre(streets) {
 	let countF = parseInt(0);
 	let countO = parseInt(0);
 	let otherTab = [];
+	console.log(streets);
 
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(' ');
@@ -72,18 +73,23 @@ async function countGenre(streets) {
 				tempTab[j] === "Place" || tempTab[j] === "Voie" ||
 				tempTab[j] === "Boulevard" || tempTab[j] === "des" ||
 				tempTab[j] === "Impasse" || tempTab[j] === "Quai" ||
-				tempTab[j] === "Grande" || tempTab[j] === "et") {
+				tempTab[j] === "Grande" || tempTab[j] === "et" ||
+				tempTab[j] === "du" || tempTab[j] === "les" ||
+				tempTab[j] === "") {
 				continue;
-			}
-			for (let k = 0; k < objectsJSON.length; k++) {
-				if (objectsJSON[k]['01_prenom'] === tempTab[j]) {
-					if (objectsJSON[k]['02_genre'] === 'm') {
-						countM += 1;
-					} else if (objectsJSON[k]['02_genre'] === 'f') {
-						countF += 1;
-					} else {
-						otherTab.push(streets[i])
-						countO += 1;
+			} else {
+				for (let k = 0; k < objectsJSON.length; k++) {
+					console.log(tempTab[j]);
+					if ((objectsJSON[k]['01_prenom'].charAt(0).toUpperCase() + objectsJSON[k]['01_prenom'].slice(1)) === tempTab[j]) {
+						console.log(objectsJSON[k]['02_genre'])
+						if (objectsJSON[k]['02_genre'] === "m") {
+							countM += 1;
+						} else if (objectsJSON[k]['02_genre'] === "f") {
+							countF += 1;
+						} else {
+							otherTab.push(streets[i]);
+							countO += 1;
+						}
 					}
 				}
 			}
