@@ -1,16 +1,5 @@
 var objectsJSON;
-
-await fetch('listePrenoms.json')
-	.then(response => {
-		response.json()
-	})
-	.then(data => {
-		console.log(data);
-		objectsJSON = data;
-	})
-	.catch(error => console.error('Error loading listePrenoms.json:', error));
-
-
+var uniqueStreets;
 const queryRequest = `
 [out:json];
 area(id:3600120965)->.searchArea;
@@ -20,9 +9,24 @@ area(id:3600120965)->.searchArea;
 out;
 `;
 
-var uniqueStreet;
 
-function getStreetArray(queryRequest) {
+await fetch('listePrenoms.json')
+	.then(response => {
+		if (!response.ok) {
+			throw new Error("Network response wasn't ok");
+		}
+		return response.json()
+	})
+	.then(data => {
+		console.log(data);
+		objectsJSON = data;
+	})
+	.catch(error => console.error('Error loading listePrenoms.json:', error));
+
+
+
+
+async function getStreetArray(queryRequest) {
 	fetch("https://overpass-api.de/api/interpreter", {
 		method: 'POST',
 		mode: 'cors',
@@ -35,26 +39,31 @@ function getStreetArray(queryRequest) {
 			return (response.json());
 		})
 		.then((data) => {
-			uniqueStreet = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
-			console.log(uniqueStreet);
-			return (uniqueStreet);
+			if (data && data.elements) {
+				test = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
+				return (test);
+			} else {
+				throw new Error('Invalid Data Format');
+			}
 		})
+		.then((test => {
+			uniqueStreets = test;
+		}))
 		.catch(error => {
 			console.error('There was a problem with the fetch operation:', error);
 		});
 }
 
-getStreetArray(queryRequest);
 
-function countGenre() {
+async function countGenre() {
+	await getStreetArray(queryRequest);
 	let countM = parseInt(0);
 	let countF = parseInt(0);
 	let countO = parseInt(0);
-	let streets = getStreetArray(queryRequest);
 	let otherTab = [];
 
-	for (let i = 0; i < streets.length; i++) {
-		let tempTab = streets[i].split(' ');
+	for (let i = 0; i < uniqueStreets.length; i++) {
+		let tempTab = uniqueStreets[i].split(' ');
 		for (let j = 0; j < tempTab.length; j++) {
 			if (tempTab[j] === "Rue" || tempTab[j] === "de" ||
 				tempTab[j] === "la" || tempTab[j] === "le" ||
@@ -84,4 +93,5 @@ function countGenre() {
 	return (otherTab);
 }
 
-countGenre();
+let result = await countGenre();
+console.log(result);
