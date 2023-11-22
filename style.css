@@ -3,11 +3,15 @@
 	src: url('fonts/Targa\ MS.ttf') format('truetype');
 }
 
+html {
+    --res: calc(0.01 * 10vmin)
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	background-image: url('img/Background.jpg');
+	background-image: url('img/Background2.jpg');
 }
 
 .slide {
@@ -17,53 +21,56 @@ body {
     justify-content: center;
     position: relative;
     align-items: center;
-    
-
 }
 
 
 h1 {
     font-family: 'Targa';
-    font-size: 5vw;
-    font-size: 80px;
+    font-size: calc(80 * var(--res));
     z-index: 1;
-    color: black;
+    color: #d0b298;
     text-align: center;
-    
 }
 
 h2 {
     font-family: 'Targa';
-    font-size: 40px;
+    font-size: calc(80 * var(--res));
     z-index: 1;
-    color: black;
+    color: #d0b298;
     text-align: center;
-
-
 }
 
 
 h3 {
     font-family: 'Targa';
-    font-size: 40px;
+    font-size: calc(80 * var(--res));
     z-index: 1;
-    color: black;
+    color: #d0b298;
     text-align: center;
 
 }
 
 h4 {
     font-family: 'Targa';
-    font-size: 40px;
+    font-size: calc(80 * var(--res));
     z-index: 1;
-    color: black;
+    color: #d0b298;
+    text-align: center;
+
+}
+
+h5 {
+    font-family: 'Targa';
+    font-size: calc(80 * var(--res));
+    z-index: 1;
+    color: #d0b298;
     text-align: center;
 
 }
 
 .bus,
 #bus {
-    max-width: 120px;
+    width: calc(150 * var(--res));
     height: auto;
     justify-content: center;
     display: flex;
