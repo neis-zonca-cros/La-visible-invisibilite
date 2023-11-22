@@ -80,14 +80,14 @@ h5 {
 }
 
 #carre {
-    height:10vw;
+    height:5vw;
     width:10vh;
     margin:30px auto;
     background : rgb(136, 127, 56);
     opacity: 0.3;
     position: absolute;
     top: 0px;
-    left: 0px;
+    left: 30px;
 }
 
 #carre2 {
@@ -116,7 +116,7 @@ h5 {
     background : rgb(136, 127, 56);
     opacity: 0.3;
     position: absolute;
-    top: 300px;
+    top: 600px;
     left: 600px;
 }
 
@@ -126,8 +126,8 @@ h5 {
     background : rgb(136, 127, 56);
     opacity: 0.3;
     position: absolute;
-    top: 300px;
-    left: 600px;
+    top: 700px;
+    left: 200px;
 }
 
 #carre6 {
@@ -137,5 +137,5 @@ h5 {
     opacity: 0.3;
     position: absolute;
     top: 300px;
-    left: 600px;
+    left: 1000px;
 }
