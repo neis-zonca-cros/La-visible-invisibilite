@@ -78,24 +78,22 @@ async function countGenre(streets) {
 				tempTab[j] === "") {
 				continue;
 			} else {
-				for (let k = 0; k < objectsJSON.length; k++) {
-					console.log(tempTab[j]);
-					if ((objectsJSON[k]['01_prenom'].charAt(0).toUpperCase() + objectsJSON[k]['01_prenom'].slice(1)) === tempTab[j]) {
-						console.log(objectsJSON[k]['02_genre'])
-						if (objectsJSON[k]['02_genre'] === "m") {
-							countM += 1;
-						} else if (objectsJSON[k]['02_genre'] === "f") {
-							countF += 1;
-						} else {
-							otherTab.push(streets[i]);
-							countO += 1;
-						}
-					}
+
+				console.log(objectsJSON[k]['02_genre'])
+				if (objectsJSON[k]['02_genre'] === "m") {
+					countM += 1;
+				} else if (objectsJSON[k]['02_genre'] === "f") {
+					countF += 1;
+				} else {
+					otherTab.push(streets[i]);
+					countO += 1;
 				}
 			}
 		}
 	}
-	return (otherTab);
+}
+	}
+return (otherTab);
 }
 
 
