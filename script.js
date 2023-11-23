@@ -11,7 +11,7 @@ out;
 `;
 
 
-await fetch('listePrenoms.json')
+await fetch('Liste_Prenoms.json')
 	.then(response => {
 		if (!response.ok) {
 			throw new Error("Network response wasn't ok");
@@ -60,10 +60,9 @@ async function countGenre(streets) {
 	let countF = parseInt(0);
 	let countO = parseInt(0);
 	let otherTab = [];
-	console.log(streets);
 
 	for (let i = 0; i < streets.length; i++) {
-		let tempTab = streets[i].split(' ');
+		let tempTab = streets[i].split(/\s(l'|s'|d')/).filter(Boolean);
 		for (let j = 0; j < tempTab.length; j++) {
 			if (tempTab[j] === "Rue" || tempTab[j] === "de" ||
 				tempTab[j] === "la" || tempTab[j] === "le" ||
@@ -78,23 +77,31 @@ async function countGenre(streets) {
 				tempTab[j] === "") {
 				continue;
 			} else {
-
-				console.log(objectsJSON[k]['02_genre'])
-				if (objectsJSON[k]['02_genre'] === "m") {
-					countM += 1;
-				} else if (objectsJSON[k]['02_genre'] === "f") {
-					countF += 1;
-				} else {
-					otherTab.push(streets[i]);
-					countO += 1;
-				}
+				let check = objectsJSON.includes(tempTab[j]);
+				if (check === true)
+					return (check);
 			}
 		}
 	}
 }
-	}
-return (otherTab);
-}
+
+
+// 				console.log(objectsJSON[k]['02_genre'])
+// 				if (objectsJSON[k]['02_genre'] === "m") {
+// 					countM += 1;
+// 				} else if (objectsJSON[k]['02_genre'] === "f") {
+// 					countF += 1;
+// 				} else {
+// 					otherTab.push(streets[i]);
+// 					countO += 1;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// 	}
+// return (otherTab);
+// }
 
 
 let result = await countGenre(await getStreetArray(queryRequest));
