@@ -129,11 +129,11 @@ h5 {
 	overflow: hidden;
 	text-align: center;
 	justify-content: center;
-	animation: l3 0.8s steps(20) infinite;
+	animation: l3 1s steps(20) infinite;
 }
 
 .loader::before {
-	animation-duration: 0.8s;
+	animation-duration: 1s;
 }
 
 @keyframes l3 {
