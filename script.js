@@ -10,7 +10,6 @@ area(id:3600120965)->.searchArea;
 out;
 `;
 
-
 await fetch('Liste_Prenoms.json')
 	.then(response => {
 		if (!response.ok) {
@@ -20,7 +19,6 @@ await fetch('Liste_Prenoms.json')
 	})
 	.then(data => {
 		objectsJSON = data;
-		console.log(objectsJSON);
 	})
 	.catch(error => console.error('Error loading listePrenoms.json:', error));
 
@@ -55,14 +53,17 @@ async function getStreetArray(queryRequest) {
 }
 
 
-async function countGenre(streets) {
+async function countGenre() {
 	let countM = parseInt(0);
 	let countF = parseInt(0);
 	let countO = parseInt(0);
-	let otherTab = [];
+	let goodTab = [];
+	let badTab = [];
+	let streets = processStreets();
+
 
 	for (let i = 0; i < streets.length; i++) {
-		let tempTab = streets[i].split(/\s(l'|s'|d')/).filter(Boolean);
+		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|Saint-)|-/).filter(Boolean);
 		for (let j = 0; j < tempTab.length; j++) {
 			if (
 				//to do a mettre dans une constante
@@ -79,34 +80,19 @@ async function countGenre(streets) {
 				tempTab[j] === "") {
 				continue;
 			} else {
-				let indexNameIn = objectsJSON.findIndex(obj => obj.name === tempTab[j]);
+				let indexNameIn = objectsJSON.findIndex(obj => (obj.name.charAt(0).toLowerCase() + obj.name.slice(1)) === (tempTab[j].charAt(0).toLowerCase() + tempTab[j].slice(1)));
 				if (indexNameIn >= 0) {
-					otherTab.push(objectsJSON[indexNameIn]);
+					goodTab.push(tempTab);
+					break;
+				} else {
+					badTab.push(tempTab);
 				}
 			}
 		}
 	}
-	return (otherTab);
+	return (badTab);
 }
 
 
-// 				console.log(objectsJSON[k]['02_genre'])
-// 				if (objectsJSON[k]['02_genre'] === "m") {
-// 					countM += 1;
-// 				} else if (objectsJSON[k]['02_genre'] === "f") {
-// 					countF += 1;
-// 				} else {
-// 					otherTab.push(streets[i]);
-// 					countO += 1;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// 	}
-// return (otherTab);
-// }
-
-
-let result = await countGenre(await getStreetArray(queryRequest));
+let result = await countGenre();
 console.log(result);
