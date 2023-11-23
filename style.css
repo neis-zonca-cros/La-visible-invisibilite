@@ -88,9 +88,18 @@ h5 {
 	display: flex;
 }
 
+.two{
+    background-color: rgba(124, 186, 215, 0.300);
+    width: 100vw;
+	height: 100vh;
+
+
+
+}
+
 .carre {
-	width: 2px;
-	height: 2px;
+	width: 20px;
+	height: 20px;
 	background: rgba(124, 186, 215, 0.462);
 	position: absolute;
 	z-index: -1;
@@ -98,9 +107,9 @@ h5 {
 }
 
 .carre50 {
-	width: 2%;
-	height: 1%;
-	background: rgba(124, 186, 215, 0.462);
+	width: 5px;
+	height: 5px;
+	background: rgba(215, 124, 157, 0.462);
 	z-index: -1;
 	position: relative;
 	align-items: center;
