@@ -16,19 +16,18 @@ for (let i = 0; i<2215; i++){
 }
 
 
-for (let j = 0; j<769; j+=63) {
+for (let j = 0; j<101; j++) {
     console.log(j)
+    for (let k=0; k<11)
     var carre50 = document.createElement('div');
-    carre50.id = "carre50";
+    carre50.id = "carre50" + j;
     carre50.dataset.aos="zoom-in";
     carre50.dataset.aos.duration="3000";
     carre50.classList.add("carre50");
-    carre50.style.left="0px";
-    carre50.style.top='0px';
-    document.querySelector(".slide.three").appendChild(carre50);
+    document.querySelector(".container").appendChild(carre50);
 
-    pos_x = j;
-    console.log(document.getElementById("carre50").style.left = pos_x + "px");
+    pourcentage = j;
+    console.log(document.getElementById("carre50" + j).style.top = Math.round(Math.random()*90) + "%");
 
 
 }
