@@ -64,7 +64,9 @@ async function countGenre(streets) {
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(/\s(l'|s'|d')/).filter(Boolean);
 		for (let j = 0; j < tempTab.length; j++) {
-			if (tempTab[j] === "Rue" || tempTab[j] === "de" ||
+			if (
+				//to do a mettre dans une constante
+				tempTab[j] === "Rue" || tempTab[j] === "de" ||
 				tempTab[j] === "la" || tempTab[j] === "le" ||
 				tempTab[j] === "du" || tempTab[j] === "Avenue" ||
 				tempTab[j] === "Chemin" || tempTab[j] === "Route" ||
@@ -77,12 +79,14 @@ async function countGenre(streets) {
 				tempTab[j] === "") {
 				continue;
 			} else {
-				let check = objectsJSON.includes(tempTab[j]);
-				if (check === true)
-					return (check);
+				let indexNameIn = objectsJSON.findIndex(obj => obj.name === tempTab[j]);
+				if (indexNameIn >= 0) {
+					otherTab.push(objectsJSON[indexNameIn]);
+				}
 			}
 		}
 	}
+	return (otherTab);
 }
 
 
@@ -105,4 +109,4 @@ async function countGenre(streets) {
 
 
 let result = await countGenre(await getStreetArray(queryRequest));
-console.log("Result : " + result);
+console.log(result);
