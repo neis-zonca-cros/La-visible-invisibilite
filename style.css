@@ -21,13 +21,14 @@ body {
     justify-content: center;
     position: relative;
     align-items: center;
+
 }
 
 
 h1 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
-    z-index: 1;
+    z-index: 2;
     color: #f0d9c6;
     text-align: center;
     display: flex;
@@ -36,7 +37,7 @@ h1 {
 h2 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
-    z-index: 1;
+    z-index: 3;
     color: #f0d9c6;
     text-align: center;
 }
@@ -45,7 +46,7 @@ h2 {
 h3 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
-    z-index: 1;
+    z-index: 2;
     color: #f0d9c6;
     text-align: center;
 
@@ -54,7 +55,7 @@ h3 {
 h4 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
-    z-index: 1;
+    z-index: 2;
     color: #f0d9c6;
     text-align: center;
 
@@ -63,7 +64,7 @@ h4 {
 h5 {
     font-family: 'Targa';
     font-size: calc(80 * var(--res));
-    z-index: 1;
+    z-index: 2;
     color: #f0d9c6;
     text-align: center;
 
@@ -79,12 +80,12 @@ h5 {
     position: fixed; top: 70px;    
 }
 
-#carre {
-    width: 5vw;
-    height: 10vh;
-    background : rgb(136, 127, 56);
-    opacity: 0.3;
+.carre {
+    width: 2px;
+    height: 2px;
+    background : rgba(124, 186, 215, 0.462);
     position: absolute;
+    z-index: -1;
 
 }
 
