@@ -1,6 +1,6 @@
 var objectsJSON;
 var uniqueStreets;
-var numberOfStreets;
+var streetsCount;
 const queryRequest = `
 [out:json];
 area(id:3600120965)->.searchArea;
@@ -40,8 +40,10 @@ async function getStreetArray(queryRequest) {
 		.then((data) => {
 			if (data && data.elements) {
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
-				numberOfStreets = uniqueStreets.length;
-				document.getElementById("numberOfStreets").innerHTML = numberOfStreets;
+				streetsCount = uniqueStreets.length;
+				loader.style.display = "none";
+				numberOfStreets.style.display = "inline-flex";
+				document.getElementById("numberOfStreets").innerHTML = streetsCount;
 				return (uniqueStreets);
 			} else {
 				throw new Error('Invalid Data Format');
@@ -59,7 +61,7 @@ async function countGenre() {
 	let countO = parseInt(0);
 	let goodTab = [];
 	let badTab = [];
-	let streets = processStreets();
+	let streets = getStreetArray(queryRequest);
 
 
 	for (let i = 0; i < streets.length; i++) {
