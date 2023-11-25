@@ -124,9 +124,3 @@ h5 {
 	display: flex;
 	top: 0;
 }
-
-@keyframes l3 {
-	100% {
-		text-shadow: 0 -20em 0 #f0d9c6
-	}
-}
