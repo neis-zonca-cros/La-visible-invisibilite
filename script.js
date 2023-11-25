@@ -1,6 +1,9 @@
 var objectsJSON;
 var uniqueStreets;
 var streetsCount;
+var countM = parseInt(0);
+var countF = parseInt(0);
+var countO = parseInt(0);
 const queryRequest = `
 [out:json];
 area(id:3600120965)->.searchArea;
@@ -41,6 +44,9 @@ async function getStreetArray(queryRequest) {
 			if (data && data.elements) {
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
 				streetsCount = uniqueStreets.length;
+				// loader.style.display = "none";
+				// numberOfStreets.style.display = "inline-flex";
+				// document.getElementById("numberOfStreets").innerHTML = streetsCount;
 				return (uniqueStreets);
 			} else {
 				throw new Error('Invalid Data Format');
@@ -52,23 +58,13 @@ async function getStreetArray(queryRequest) {
 }
 
 
-async function countGenre() {
-	let countM = parseInt(0);
-	let countF = parseInt(0);
-	let countO = parseInt(0);
-	let goodTab = [];
-	let badTab = [];
-	let streets = await getStreetArray(queryRequest);
-	loader.style.display = "none";
-	numberOfStreets.style.display = "inline-flex";
-	document.getElementById("numberOfStreets").innerHTML = streetsCount;
-
+async function countGenre(streets) {
 
 	for (let i = 0; i < streets.length; i++) {
-		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|Saint-)|-/).filter(Boolean);
+		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|L'|S'|D'|Saint-)|-/).filter(Boolean);
 		for (let j = 0; j < tempTab.length; j++) {
 			if (
-				//to do a mettre dans une constante
+				//to do a mettre dans une constante + rajouter les nombres
 				tempTab[j] === "Rue" || tempTab[j] === "de" ||
 				tempTab[j] === "la" || tempTab[j] === "le" ||
 				tempTab[j] === "du" || tempTab[j] === "Avenue" ||
@@ -79,22 +75,30 @@ async function countGenre() {
 				tempTab[j] === "Impasse" || tempTab[j] === "Quai" ||
 				tempTab[j] === "Grande" || tempTab[j] === "et" ||
 				tempTab[j] === "du" || tempTab[j] === "les" ||
-				tempTab[j] === "") {
+				tempTab[j] === "Saint" || tempTab[j] == "") {
 				continue;
 			} else {
 				let indexNameIn = objectsJSON.findIndex(obj => (obj.name.charAt(0).toLowerCase() + obj.name.slice(1)) === (tempTab[j].charAt(0).toLowerCase() + tempTab[j].slice(1)));
 				if (indexNameIn >= 0) {
-					goodTab.push(tempTab);
+					if (objectsJSON[indexNameIn].genre === 'f') {
+						countF += 1;
+					} else {
+						countM += 1;
+					}
 					break;
 				} else {
-					badTab.push(tempTab);
+					if (j + 1 >= tempTab.length) {
+						// console.log(tempTab);
+						countO += 1;
+					}
 				}
 			}
 		}
 	}
-	return (badTab);
 }
 
 
-let result = await countGenre();
-console.log(result);
+await countGenre(await getStreetArray(queryRequest));
+console.log("Féminin : " + countF);
+console.log("Masculin : " + countM);
+console.log("Other : " + countO);

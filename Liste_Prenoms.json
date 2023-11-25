@@ -13108,6 +13108,10 @@
 		"genre": "f"
 	},
 	{
+		"name": "Élisabeth",
+		"genre": "f"
+	},
+	{
 		"name": "Elisabeth",
 		"genre": "f"
 	},
@@ -28097,10 +28101,6 @@
 	},
 	{
 		"name": "leroy",
-		"genre": "m"
-	},
-	{
-		"name": "les",
 		"genre": "m"
 	},
 	{
@@ -46444,11 +46444,11 @@
 		"genre": "f"
 	},
 	{
-		"name": "toni (1)",
+		"name": "toni",
 		"genre": "m"
 	},
 	{
-		"name": "toni (2)",
+		"name": "toni",
 		"genre": "f"
 	},
 	{
@@ -50525,6 +50525,114 @@
 	},
 	{
 		"name": "þórr",
+		"genre": "m"
+	},
+	{
+		"name": "Joliot",
+		"genre": "f"
+	},
+	{
+		"name": "Berthelot",
+		"genre": "m"
+	},
+	{
+		"name": "Albéric",
+		"genre": "m"
+	},
+	{
+		"name": "Abbé",
+		"genre": "m"
+	},
+	{
+		"name": "Bouvier",
+		"genre": "f"
+	},
+	{
+		"name": "Frères",
+		"genre": "m"
+	},
+	{
+		"name": "Berchet",
+		"genre": "m"
+	},
+	{
+		"name": "Rockfeller",
+		"genre": "m"
+	},
+	{
+		"name": "Ranvier",
+		"genre": "m"
+	},
+	{
+		"name": "Seignemartin",
+		"genre": "m"
+	},
+	{
+		"name": "Nungesser",
+		"genre": "m"
+	},
+	{
+		"name": "Coli",
+		"genre": "m"
+	},
+	{
+		"name": "Berchet",
+		"genre": "m"
+	},
+	{
+		"name": "Krüger",
+		"genre": "m"
+	},
+	{
+		"name": "Morat",
+		"genre": "m"
+	},
+	{
+		"name": "Professeur",
+		"genre": "m"
+	},
+	{
+		"name": "Genton",
+		"genre": "m"
+	},
+	{
+		"name": "Agnan",
+		"genre": "m"
+	},
+	{
+		"name": "Fulchiron",
+		"genre": "m"
+	},
+	{
+		"name": "Berchet",
+		"genre": "m"
+	},
+	{
+		"name": "Chambonnet",
+		"genre": "m"
+	},
+	{
+		"name": "Joffre",
+		"genre": "m"
+	},
+	{
+		"name": "Sala",
+		"genre": "m"
+	},
+	{
+		"name": "Kitchener",
+		"genre": "m"
+	},
+	{
+		"name": "Marchand",
+		"genre": "m"
+	},
+	{
+		"name": "Rollet",
+		"genre": "m"
+	},
+	{
+		"name": "Duquesne",
 		"genre": "m"
 	},
 	{
