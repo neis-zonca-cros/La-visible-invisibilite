@@ -44,9 +44,6 @@ async function getStreetArray(queryRequest) {
 			if (data && data.elements) {
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
 				streetsCount = uniqueStreets.length;
-				// loader.style.display = "none";
-				// numberOfStreets.style.display = "inline-flex";
-				// document.getElementById("numberOfStreets").innerHTML = streetsCount;
 				return (uniqueStreets);
 			} else {
 				throw new Error('Invalid Data Format');
@@ -88,7 +85,7 @@ async function countGenre(streets) {
 					break;
 				} else {
 					if (j + 1 >= tempTab.length) {
-						// console.log(tempTab);
+						console.log(tempTab);
 						countO += 1;
 					}
 				}
