@@ -71,8 +71,8 @@ async function countGenre(streets) {
 				tempTab[j] === "Boulevard" || tempTab[j] === "des" ||
 				tempTab[j] === "Impasse" || tempTab[j] === "Quai" ||
 				tempTab[j] === "Grande" || tempTab[j] === "et" ||
-				tempTab[j] === "du" || tempTab[j] === "les" ||
-				tempTab[j] === "Saint" || tempTab[j] == "") {
+				tempTab[j] === "du" || tempTab[j] === "les" || 
+				tempTab[j] == "" || tempTab[j] === "Montée") {
 				continue;
 			} else {
 				let indexNameIn = objectsJSON.findIndex(obj => (obj.name.charAt(0).toLowerCase() + obj.name.slice(1)) === (tempTab[j].charAt(0).toLowerCase() + tempTab[j].slice(1)));
