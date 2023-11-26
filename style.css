@@ -1,17 +1,21 @@
+/* Import de la font */
 @font-face {
 	font-family: 'Targa';
 	src: url('fonts/Targa\ MS.ttf') format('truetype');
 }
 
+/* Responsivité */
 html {
 	--res: calc(0.01 * 10vmin)
 }
 
+/* Paramètres du body */
 body {
 	margin: 0;
 	padding: 0;
+	/* Barre scroll horizontal supprimé */
 	overflow-x: hidden;
-	background-image: url('img/Background2.jpg');
+	background-image: url('img/lyon3.jpg');
 }
 
 .blocVertical {
@@ -21,6 +25,7 @@ body {
 	flex-direction: column;
 }
 
+/* Paramètres de toutes les slides */
 .slide {
 	width: 100vw;
 	height: 100vh;
@@ -31,52 +36,7 @@ body {
 
 }
 
-
-h1 {
-	font-family: 'Targa';
-	font-size: calc(80 * var(--res));
-	z-index: 2;
-	color: #f0d9c6;
-	text-align: center;
-	justify-content: center;
-	display: flex;
-}
-
-h2 {
-	font-family: 'Targa';
-	font-size: calc(80 * var(--res));
-	z-index: 3;
-	color: #f0d9c6;
-	text-align: center;
-}
-
-
-h3 {
-	width: 100%;
-	font-family: 'Targa';
-	font-size: calc(80 * var(--res));
-	z-index: 2;
-	color: #f0d9c6;
-}
-
-h4 {
-	font-family: 'Targa';
-	font-size: calc(80 * var(--res));
-	z-index: 2;
-	color: #f0d9c6;
-	text-align: center;
-
-}
-
-h5 {
-	font-family: 'Targa';
-	font-size: calc(80 * var(--res));
-	z-index: 2;
-	color: #f0d9c6;
-	text-align: center;
-
-}
-
+/* Paramètres du bus */
 .bus,
 #bus {
 	width: calc(150 * var(--res));
@@ -88,31 +48,81 @@ h5 {
 	display: flex;
 }
 
-.two{
-    background-color: rgba(124, 186, 215, 0.300);
-    width: 100vw;
-	height: 100vh;
+
+/* Paramètres de tous les textes */
+h1 {
+	font-family: 'Targa';
+	font-size: calc(80 * var(--res));
+	z-index: 2;
+	color: #000000;
+	text-align: center;
+	justify-content: center;
+	display: flex;
+}
+
+h2 {
+	font-family: 'Targa';
+	font-size: calc(80 * var(--res));
+	z-index: 3;
+	color: #000000;
+	text-align: center;
+	position: relative;
+}
 
 
+h3 {
+	width: 100%;
+	font-family: 'Targa';
+	font-size: calc(70 * var(--res));
+	z-index: 2;
+	color: #000000;
+	position: relative;
+	top: 140px;
+}
+
+h4 {
+	font-family: 'Targa';
+	font-size: calc(70 * var(--res));
+	z-index: 2;
+	color: #000000;
+	text-align: center;
+	position: relative;
+	top: 140px;
 
 }
 
-.carre {
-	width: 20px;
-	height: 20px;
-	background: rgba(124, 186, 215, 0.462);
+h5 {
+	font-family: 'Targa';
+	font-size: calc(70 * var(--res));
+	z-index: 2;
+	color: #000000;
+	text-align: center;
+	position: relative;
+	top: 140px;
+
+}
+
+h6 {
+	font-family: 'Targa';
+	font-size: calc(70 * var(--res));
+	z-index: 2;
+	color: #000000;
+	text-align: center;
+	position: relative;
+	top: 140px;
+	
+}
+
+
+
+/* Paramètres des ronds random en slide 3 : noms autres */
+.rond {
+	border-radius: 15px;
+	width: 15px;
+	height: 15px;
+	background: rgba(244, 184, 81, 1);
 	position: absolute;
 	z-index: -1;
-
-}
-
-.carre50 {
-	width: 5px;
-	height: 5px;
-	background: rgba(215, 124, 157, 0.462);
-	z-index: -1;
-	position: relative;
-	align-items: center;
 
 }
 
@@ -125,6 +135,104 @@ h5 {
 	top: 0;
 }
 
+
+/* Paramètres des ronds random en slide 4 : noms personnes */
+.rond1 {
+	border-radius: 15px;
+	width: 15px;
+	height: 15px;
+	background: rgba(148, 131, 146, 1);
+	position: absolute;
+	z-index: -1;
+
+}
+.container1 {
+	width: 50%;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	display: flex;
+	top: 0;
+}
+
+
+/* Paramètres des ronds random en slide 5 :  noms hommes */
+.rond2 {
+	border-radius: 15px;
+	width: 15px;
+	height: 15px;
+	background: rgba(143, 45, 86, 1);
+	position: absolute;
+	z-index: -1;
+
+}
+.container2 {
+	width: 50%;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	display: flex;
+	top: 0;
+}
+
+
+/* Paramètres des ronds random en slide 6 : noms femmes */
+.rond3 {
+	border-radius: 15px;
+	width: 15px;
+	height: 15px;
+	background: rgba(189, 198, 150, 1);
+	position: absolute;
+	z-index: -1;
+}
+.container3 {
+	width: 50%;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	display: flex;
+	top: 0;
+}
+
+/* Paramètres des ronds random en slide 7 : noms femmes (rond4) + hommes (rond5) */
+.rond4 {
+	border-radius: 15px;
+	width: 15px;
+	height: 15px;
+	background: rgba(189, 198, 150, 1);
+	position: absolute;
+	z-index: -1;
+}
+.container4 {
+	width: 50%;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	display: flex;
+	top: 0;
+}
+
+.rond5 {
+	border-radius: 15px;
+	width: 15px;
+	height: 15px;
+	background: rgba(143, 45, 86, 1);
+	position: absolute;
+	z-index: -1;
+
+}
+.container5 {
+	width: 50%;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	display: flex;
+	top: 0;
+}
+
+
+
+/* Loader en slide 2 pour le nombre de rues*/
 .loader::before,
 .loader::after {
 	content: "12 00 23 40 31 45 60 17 45 32 29 42 50 08 14 07 46 11 03 55";
