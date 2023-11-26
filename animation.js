@@ -9,7 +9,7 @@ for (let i = 0; i<50; i++){
     document.querySelector(".container").appendChild(rond);
 
     pos_x = Math.round(Math.random()*1512);
-    pos_y = Math.round(Math.random()*768);
+    pos_y = Math.round(Math.random()*200);
 
     document.getElementById("rond" + i).style.left = pos_x + "px";
     document.getElementById("rond" + i).style.top= pos_y + "px"; 
@@ -25,7 +25,7 @@ for (let i = 0; i<50; i++){
     document.querySelector(".container1").appendChild(rond1);
 
     pos_x = Math.round(Math.random()*1512);
-    pos_y = Math.round(Math.random()*768);
+    pos_y = Math.round(Math.random()*400);
 
     document.getElementById("rond1" + i).style.left = pos_x + "px";
     document.getElementById("rond1" + i).style.top= pos_y + "px"; 
@@ -41,7 +41,7 @@ for (let i = 0; i<50; i++){
     document.querySelector(".container2").appendChild(rond2);
 
     pos_x = Math.round(Math.random()*1512);
-    pos_y = Math.round(Math.random()*768);
+    pos_y = Math.round(Math.random()*400);
 
     document.getElementById("rond2" + i).style.left = pos_x + "px";
     document.getElementById("rond2" + i).style.top= pos_y + "px"; 
@@ -57,7 +57,7 @@ for (let i = 0; i<50; i++){
     document.querySelector(".container3").appendChild(rond3);
 
     pos_x = Math.round(Math.random()*1512);
-    pos_y = Math.round(Math.random()*768);
+    pos_y = Math.round(Math.random()*400);
 
     document.getElementById("rond3" + i).style.left = pos_x + "px";
     document.getElementById("rond3" + i).style.top= pos_y + "px"; 
