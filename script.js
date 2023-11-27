@@ -124,111 +124,11 @@ for (let i=0; i<4; i++) {
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
-var pourcentO = 100*countO/streetsCount;
-var pourcentP = 100*(countM+countF)/streetsCount;
-var pourcentM = 100*countM/streetsCount;
-var pourcentF = 100*countF/streetsCount;
+export var pourcentO = 100*countO/streetsCount;
+export var pourcentP = 100*(countM+countF)/streetsCount;
+export var pourcentM = 100*countM/streetsCount;
+export var pourcentF = 100*countF/streetsCount;
 console.log("Femmes : " + pourcentF)
 console.log("Other : " + pourcentO)
 console.log("Persons : " + pourcentP)
 console.log("Hommes : " + pourcentM)
-
-//afficher pourcentage Other
-document.getElementById("pourcentO").innerHTML = pourcentO;
-
-//afficher pourcentage Personnes
-document.getElementById("pourcentP").innerHTML = pourcentP;
-
-//afficher pourcentage Masculins
-document.getElementById("pourcentM").innerHTML = pourcentM;
-
-//afficher pourcentage Feminins
-document.getElementById("pourcentF").innerHTML = pourcentF;
-
-
-
-//création de pourcentO rond container: noms autres
-for (let i = 0; i<pourcentO; i++){
-    var rond = document.createElement('div');
-    rond.id = "rond" + i;
-    rond.classList.add("rond");
-    document.querySelector(".container").appendChild(rond);
-
-	var pos_x = Math.round(Math.random()*1512);
-	var pos_y = Math.round(Math.random()*200);
-
-    document.getElementById("rond" + i).style.left = pos_x + "px";
-    document.getElementById("rond" + i).style.top = pos_y + "px"; 
-}
-
-//création de pourcentP rond container1: noms personnes
-for (let i = 0; i<pourcentP; i++){
-    var rondp = document.createElement('div');
-    rondp.id = "rondp" + i;
-    rondp.classList.add("rondp");
-    document.querySelector(".container1").appendChild(rondp);
-
-    var pos_a = Math.round(Math.random()*1512);
-    var pos_b = Math.round(Math.random()*200);
-
-    document.getElementById("rondp" + i).style.left = pos_a + "px";
-    document.getElementById("rondp" + i).style.top = pos_b + "px"; 
-}
-
-//création de pourcentM rond container2: noms hommes
-for (let i = 0; i<= pourcentM; i++){
-    var rondh = document.createElement('div');
-    rondh.id = "rondh" + i;
-    rondh.classList.add("rondh");
-    document.querySelector(".container2").appendChild(rondh);
-
-    var pos_c = Math.round(Math.random()*1512);
-    var pos_d = Math.round(Math.random()*400);
-
-    document.getElementById("rondh" + i).style.left = pos_c + "px";
-    document.getElementById("rondh" + i).style.top= pos_d + "px"; 
-}
-
-//création de 49 rond container3: noms femmes
-for (let i = 0; i <= pourcentF; i++){
-    var rondf = document.createElement('div');
-    rondf.id = "rondf" + i;
-    rondf.classList.add("rondf");
-    document.querySelector(".container3").appendChild(rondf);
-
-    var pos_j = Math.round(Math.random()*1512);
-    var pos_k = Math.round(Math.random()*400);
-
-    document.getElementById("rondf" + i).style.left = pos_j + "px";
-    document.getElementById("rondf" + i).style.top= pos_k + "px"; 
-}
-
-//création de pourcent M + F rond container4: graphique du tout
-//rond 4 = Femmes
-for (let i = 0; i <= pourcentF; i++){
-    var rondff = document.createElement('div');
-    rondff.id = "rondff" + i;
-    rondff.classList.add("rondff");
-    document.querySelector(".container4").appendChild(rondff);
-
-    var pos_l = Math.round(Math.random()*1512);
-    var pos_m = Math.round(Math.random()*768);
-
-    document.getElementById("rondff" + i).style.left = pos_l + "px";
-    document.getElementById("rondff" + i).style.top= pos_m + "px"; 
-}
-
-//rond 5 = Hommes
-for (let i = 0; i<=pourcentM; i++){
-    var rondhh = document.createElement('div');
-    rondhh.id = "rondhh" + i;
-    rondhh.dataset.aos="zoom-in";
-    rondhh.classList.add("rondhh");
-    document.querySelector(".container5").appendChild(rondhh);
-
-    var pos_n = Math.round(Math.random()*1512);
-    var pos_o = Math.round(Math.random()*768);
-
-    document.getElementById("rondhh" + i).style.left = pos_n + "px";
-    document.getElementById("rondhh" + i).style.top= pos_o + "px"; 
-}
