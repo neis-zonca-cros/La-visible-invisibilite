@@ -1,4 +1,3 @@
-
 //création de 49 rond container: noms autres
 for (let i = 0; i<50; i++){
     var rond = document.createElement('div');

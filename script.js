@@ -55,7 +55,11 @@ async function getStreetArray(queryRequest) {
 }
 
 
-async function countGenre(streets) {
+async function countGenre() {
+	let streets = getStreetArray(queryRequest);
+	while (!streets) {
+		
+	}
 
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|L'|S'|D'|Saint-)|-/).filter(Boolean);
@@ -95,7 +99,7 @@ async function countGenre(streets) {
 }
 
 
-await countGenre(await getStreetArray(queryRequest));
+await countGenre();
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
