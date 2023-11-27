@@ -84,7 +84,7 @@ function loaderStr(target) {
 }
 
 async function countGenre() {
-	let streets = getStreetArray(queryRequest);
+	let streets = await getStreetArray(queryRequest);
 	loaderStr(target);
 	document.getElementById("numberOfStreets").onmouseover = event => {
 		loaderStr(event.target);
@@ -124,10 +124,10 @@ for (let i=0; i<4; i++) {
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
-export var pourcentO = 100*countO/streetsCount;
-export var pourcentP = 100*(countM+countF)/streetsCount;
-export var pourcentM = 100*countM/streetsCount;
-export var pourcentF = 100*countF/streetsCount;
+export var pourcentO = Math.round(100*countO/streetsCount);
+export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
+export var pourcentM = Math.round(100*countM/streetsCount);
+export var pourcentF = Math.round(100*countF/streetsCount);
 console.log("Femmes : " + pourcentF)
 console.log("Other : " + pourcentO)
 console.log("Persons : " + pourcentP)
