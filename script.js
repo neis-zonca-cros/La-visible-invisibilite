@@ -1,4 +1,4 @@
-var objectsJSON;
+var mapObjects = new Map();
 var uniqueStreets;
 var streetsCount;
 var streetsCountStr;
@@ -29,7 +29,10 @@ await fetch('Liste_Prenoms.json')
 		return response.json()
 	})
 	.then(data => {
-		objectsJSON = data;
+		for (let i=0; i<data.length; i++) {
+			mapObjects.set(data[i].name.charAt(0).toLowerCase() + data[i].name.slice(1), data[i].genre);
+		}
+		console.log(mapObjects);
 	})
 	.catch(error => console.error('Error loading listePrenoms.json:', error));
 
@@ -65,8 +68,10 @@ async function getStreetArray(queryRequest) {
 
 
 function loaderStr(target) {
+	console.log("tout de suite");
 	let iterations = 0;
 	let interval = setInterval(() => {
+		console.log("tard")
 		target.innerText = target.innerText.split("")
 		.map((number, index) => {
 			if (index < iterations) {
@@ -75,7 +80,23 @@ function loaderStr(target) {
 			return numbers[Math.floor(Math.random() * 10)]
 		})
 		.join("");
-		if (iterations >= streetsCountStr.length) {
+		if (iterations >= 4) {
+			clearInterval(interval);
+		}
+
+		iterations += 1/10; 
+	}, 50);
+}
+
+function loaderGlobal(target) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		let nbr = "";
+		for (let i=0; i<4; i++) {
+			nbr += Math.floor(Math.random() * 10).toString();
+		}
+		target.innerText = nbr;
+		if (iterations >= 4) {
 			clearInterval(interval);
 		}
 
@@ -84,11 +105,12 @@ function loaderStr(target) {
 }
 
 async function countGenre() {
+	loaderGlobal(target);
 	let streets = await getStreetArray(queryRequest);
 	loaderStr(target);
-	document.getElementById("numberOfStreets").onmouseover = event => {
-		loaderStr(event.target);
-	}
+	// document.getElementById("numberOfStreets").onmouseover = event => {
+	// 	loaderStr(event.target);
+	// }
 
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|L'|S'|D'|Saint-)|-/).filter(Boolean);
@@ -96,31 +118,30 @@ async function countGenre() {
 			if (COMMON_STREET_WORDS.includes(tempTab[j])) {
 				continue;
 			} else {
-				let indexNameIn = objectsJSON.findIndex(obj => (obj.name.charAt(0).toLowerCase() + obj.name.slice(1)) === (tempTab[j].charAt(0).toLowerCase() + tempTab[j].slice(1)));
-				if (indexNameIn >= 0) {
-					if (objectsJSON[indexNameIn].genre === 'f') {
-						countF += 1;
-					} else {
-						countM += 1;
-					}
+				tempTab[j] = tempTab[j].charAt(0).toLowerCase() + tempTab[j].slice(1);
+				if (mapObjects.get(tempTab[j]) === 'f') {
+					countF += 1;
 					break;
-				} else {
-					if (j + 1 >= tempTab.length) {
-						console.log(tempTab);
-						countO += 1;
-					}
+				} else if (mapObjects.get(tempTab[j]) === 'm') {
+					countM += 1;
+					break;
+				}
+				if (j + 1 >= tempTab.length) {
+					console.log(tempTab);
+					countO += 1;
 				}
 			}
 		}
 	}
 }
 
+
 await countGenre();
 document.getElementById("numberOfStreets").innerHTML = streetsCountStr;
-console.log(streetsCountStr);
-for (let i=0; i<4; i++) {
-	loaderStr(target);
-}
+console.log("Length streets count : " + streetsCountStr.length);
+// for (let i=0; i<4; i++) {
+// 	loaderStr(target);
+// }
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
@@ -128,7 +149,7 @@ export var pourcentO = Math.round(100*countO/streetsCount);
 export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
 export var pourcentM = Math.round(100*countM/streetsCount);
 export var pourcentF = Math.round(100*countF/streetsCount);
-console.log("Femmes : " + pourcentF)
-console.log("Other : " + pourcentO)
-console.log("Persons : " + pourcentP)
-console.log("Hommes : " + pourcentM)
+// console.log("Femmes : " + pourcentF)
+// console.log("Other : " + pourcentO)
+// console.log("Persons : " + pourcentP)
+// console.log("Hommes : " + pourcentM)
