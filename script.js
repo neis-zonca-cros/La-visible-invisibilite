@@ -60,6 +60,7 @@ async function getStreetArray(queryRequest) {
 			if (data && data.elements) {
 				//Fait un tableau de noms de rue unique sans doublons
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
+				uniqueStreets = uniqueStreets.filter(street => !/parking|n°|accès|vélos/i.test(street) && street.split(/\s+/).length > 1 && !/\d/.test(street));
 				streetsCount = uniqueStreets.length;
 				streetsCountStr = streetsCount.toString();
 				return (uniqueStreets);
@@ -102,7 +103,7 @@ function loaderStr(target) {
 			return numbers[Math.floor(Math.random() * 10)]
 		})
 		.join("");
-		if (iterations >= 4) {
+		if (iterations >= streetsCountStr.length) {
 			clearInterval(interval);
 		}
 		iterations += 1/10; 
@@ -116,12 +117,9 @@ async function countGenre() {
 	//Attends la requete API et mets le tableau de rue uniques dans streets
 	let streets = await getStreetArray(queryRequest);
 	loaderStr(target);
-	document.getElementById("numberOfStreets").onmouseover = event => {
-		loaderStr(event.target);
-	}
 
-	//Parcours tout notre tableau de rue, 
-	//et check si c'est compris dans notre map et check son genre
+	// Parcours tout notre tableau de rue, 
+	// et check si c'est compris dans notre map et check son genre
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|L'|S'|D'|Saint-)|-/).filter(Boolean);
 		for (let j = 0; j < tempTab.length; j++) {
@@ -137,7 +135,7 @@ async function countGenre() {
 					break;
 				}
 				if (j + 1 >= tempTab.length) {
-					// console.log(tempTab);
+					console.log(tempTab);
 					countO += 1;
 				}
 			}
@@ -146,164 +144,20 @@ async function countGenre() {
 }
 
 
+document.getElementById("numberOfStreets").onmouseover = event => {
+	loaderStr(event.target);
+}
+
+
 await countGenre();
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
 
-
-// function loaderPercent() {
-// 	for (let j=0; j<5; j++) {
-// 		if (j === 1) {
-// 			let divO = document.getElementById("pourcentO");
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				divO.innerText = divO.innerText.split("")
-// 				.map((number, index) => {
-// 					if (index < iterations) {
-// 						return pourcentO.toString()[index];
-// 					}
-// 					return numbers[Math.floor(Math.random() * 10)]
-// 				})
-// 				.join("");
-// 				if (iterations >= 4) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 		if (j === 2) {
-// 			let divP = document.getElementById("pourcentP")
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				divP.innerText = divP.innerText.split("")
-// 				.map((number, index) => {
-// 					if (index < iterations) {
-// 						return pourcentP.toString()[index];
-// 					}
-// 					return numbers[Math.floor(Math.random() * 10)]
-// 				})
-// 				.join("");
-// 				if (iterations >= 4) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 		if (j === 3) {
-// 			let divM = document.getElementById("pourcentM")
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				divM.innerText = divM.innerText.split("")
-// 				.map((number, index) => {
-// 					if (index < iterations) {
-// 						return pourcentM.toString()[index];
-// 					}
-// 					return numbers[Math.floor(Math.random() * 10)]
-// 				})
-// 				.join("");
-// 				if (iterations >= 4) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 		if (j === 4) {
-// 			let divF = document.getElementById("pourcentF")
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				divF.innerText = divF.innerText.split("")
-// 				.map((number, index) => {
-// 					if (index < iterations) {
-// 						return pourcentF.toString()[index];
-// 					}
-// 					return numbers[Math.floor(Math.random() * 10)]
-// 				})
-// 				.join("");
-// 				if (iterations >= 4) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 	}
-
-// }
-
-
-// function loaderGlobalPercent() {
-// 	for (let j=0; j<5; j++) {
-// 		if (j === 1) {
-// 			let divO = document.getElementById("pourcentO");
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				let nbr = "";
-// 				for (let i=0; i<2; i++) {
-// 					nbr += Math.floor(Math.random() * 10).toString();
-// 				}
-// 				divO.innerText = nbr;
-// 				if (iterations >= 2) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 		if (j === 2) {
-// 			let divP = document.getElementById("pourcentP")
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				let nbr = "";
-// 				for (let i=0; i<2; i++) {
-// 					nbr += Math.floor(Math.random() * 10).toString();
-// 				}
-// 				divP.innerText = nbr;
-// 				if (iterations >= 2) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 		if (j === 3) {
-// 			let divM = document.getElementById("pourcentM")
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				let nbr = "";
-// 				for (let i=0; i<2; i++) {
-// 					nbr += Math.floor(Math.random() * 10).toString();
-// 				}
-// 				divM.innerText = nbr;
-// 				if (iterations >= 2) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 		if (j === 4) {
-// 			let divF = document.getElementById("pourcentF")
-// 			let iterations = 0;
-// 			let interval = setInterval(() => {
-// 				let nbr = "";
-// 				for (let i=0; i<2; i++) {
-// 					nbr += Math.floor(Math.random() * 10).toString();
-// 				}
-// 				divF.innerText = nbr;
-// 				if (iterations >= 2) {
-// 					clearInterval(interval);
-// 				}
-// 				iterations += 1/10; 
-// 			}, 50);
-// 		}
-// 	}
-// }
-
-console.log("milieu");
-
 export var pourcentO = Math.round(100*countO/streetsCount);
 export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
 export var pourcentM = Math.round(100*countM/streetsCount);
 export var pourcentF = Math.round(100*countF/streetsCount);
-
-console.log("fin");
 
 console.log("Femmes : " + pourcentF + "%")
 console.log("Other : " + pourcentO + "%")
