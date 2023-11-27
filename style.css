@@ -127,7 +127,7 @@ h6 {
 }
 
 .container {
-	width: 50%;
+	width: 100%;
 	height: 100vh;
 	position: absolute;
 	left: 0;
@@ -136,7 +136,7 @@ h6 {
 }
 
 /* Paramètres des ronds random en slide 3 : noms personnes */
-.rond1 {
+.rondp {
 	border-radius: 15px;
 	width: 15px;
 	height: 15px;
@@ -147,7 +147,7 @@ h6 {
 }
 
 .container1 {
-	width: 50%;
+	width: 100%;
 	height: 100vh;
 	position: absolute;
 	left: 0;
@@ -156,7 +156,7 @@ h6 {
 }
 
 /* Paramètres des ronds random en slide 3 : noms hommes */
-.rond2 {
+.rondh {
 	border-radius: 15px;
 	width: 15px;
 	height: 15px;
@@ -167,7 +167,7 @@ h6 {
 }
 
 .container2 {
-	width: 50%;
+	width: 100vw;
 	height: 100vh;
 	position: absolute;
 	left: 0;
@@ -176,7 +176,7 @@ h6 {
 }
 
 /* Paramètres des ronds random en slide 3 : noms femmes */
-.rond3 {
+.rondf {
 	border-radius: 15px;
 	width: 15px;
 	height: 15px;
@@ -187,7 +187,7 @@ h6 {
 }
 
 .container3 {
-	width: 50%;
+	width: 100vw;
 	height: 100vh;
 	position: absolute;
 	left: 0;
@@ -195,9 +195,10 @@ h6 {
 	top: 0;
 }
 
+
 /* Paramètres des ronds random en slide 3 : noms femmes + hommes */
 /* ronds femmes */
-.rond4 {
+.rondff {
 	border-radius: 15px;
 	width: 15px;
 	height: 15px;
@@ -208,7 +209,7 @@ h6 {
 }
 
 .container4 {
-	width: 50%;
+	width: 100%;
 	height: 100vh;
 	position: absolute;
 	left: 0;
@@ -217,7 +218,7 @@ h6 {
 }
 
 /* ronds hommes */
-.rond5 {
+.rondhh {
 	border-radius: 15px;
 	width: 15px;
 	height: 15px;
@@ -228,7 +229,7 @@ h6 {
 }
 
 .container5 {
-	width: 50%;
+	width: 100%;
 	height: 100vh;
 	position: absolute;
 	left: 0;
