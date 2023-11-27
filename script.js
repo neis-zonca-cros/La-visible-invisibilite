@@ -25,6 +25,7 @@ area(id:3600120965)->.searchArea;
 out;
 `;
 
+
 //Récupère la base de donnée des prénoms et le transforme en un objet map
 await fetch('Liste_Prenoms.json')
 	.then(response => {
@@ -104,7 +105,6 @@ function loaderStr(target) {
 		if (iterations >= 4) {
 			clearInterval(interval);
 		}
-
 		iterations += 1/10; 
 	}, 50);
 }
@@ -147,47 +147,163 @@ async function countGenre() {
 
 
 await countGenre();
-document.getElementById("numberOfStreets").innerHTML = streetsCountStr;
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
 
 
-function loader2digit(target) {
-	let iterations = 0;
-	let interval = setInterval(() => {
-		let nbr = "";
-		for (let i=0; i<2; i++) {
-			nbr += Math.floor(Math.random() * 10).toString();
-		}
-		target.innerText = nbr;
-		if (iterations >= 4) {
-			clearInterval(interval);
-		}
+// function loaderPercent() {
+// 	for (let j=0; j<5; j++) {
+// 		if (j === 1) {
+// 			let divO = document.getElementById("pourcentO");
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				divO.innerText = divO.innerText.split("")
+// 				.map((number, index) => {
+// 					if (index < iterations) {
+// 						return pourcentO.toString()[index];
+// 					}
+// 					return numbers[Math.floor(Math.random() * 10)]
+// 				})
+// 				.join("");
+// 				if (iterations >= 4) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 		if (j === 2) {
+// 			let divP = document.getElementById("pourcentP")
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				divP.innerText = divP.innerText.split("")
+// 				.map((number, index) => {
+// 					if (index < iterations) {
+// 						return pourcentP.toString()[index];
+// 					}
+// 					return numbers[Math.floor(Math.random() * 10)]
+// 				})
+// 				.join("");
+// 				if (iterations >= 4) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 		if (j === 3) {
+// 			let divM = document.getElementById("pourcentM")
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				divM.innerText = divM.innerText.split("")
+// 				.map((number, index) => {
+// 					if (index < iterations) {
+// 						return pourcentM.toString()[index];
+// 					}
+// 					return numbers[Math.floor(Math.random() * 10)]
+// 				})
+// 				.join("");
+// 				if (iterations >= 4) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 		if (j === 4) {
+// 			let divF = document.getElementById("pourcentF")
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				divF.innerText = divF.innerText.split("")
+// 				.map((number, index) => {
+// 					if (index < iterations) {
+// 						return pourcentF.toString()[index];
+// 					}
+// 					return numbers[Math.floor(Math.random() * 10)]
+// 				})
+// 				.join("");
+// 				if (iterations >= 4) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 	}
 
-		iterations += 1/10; 
-	}, 50);
-}
+// }
+
+
+// function loaderGlobalPercent() {
+// 	for (let j=0; j<5; j++) {
+// 		if (j === 1) {
+// 			let divO = document.getElementById("pourcentO");
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				let nbr = "";
+// 				for (let i=0; i<2; i++) {
+// 					nbr += Math.floor(Math.random() * 10).toString();
+// 				}
+// 				divO.innerText = nbr;
+// 				if (iterations >= 2) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 		if (j === 2) {
+// 			let divP = document.getElementById("pourcentP")
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				let nbr = "";
+// 				for (let i=0; i<2; i++) {
+// 					nbr += Math.floor(Math.random() * 10).toString();
+// 				}
+// 				divP.innerText = nbr;
+// 				if (iterations >= 2) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 		if (j === 3) {
+// 			let divM = document.getElementById("pourcentM")
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				let nbr = "";
+// 				for (let i=0; i<2; i++) {
+// 					nbr += Math.floor(Math.random() * 10).toString();
+// 				}
+// 				divM.innerText = nbr;
+// 				if (iterations >= 2) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 		if (j === 4) {
+// 			let divF = document.getElementById("pourcentF")
+// 			let iterations = 0;
+// 			let interval = setInterval(() => {
+// 				let nbr = "";
+// 				for (let i=0; i<2; i++) {
+// 					nbr += Math.floor(Math.random() * 10).toString();
+// 				}
+// 				divF.innerText = nbr;
+// 				if (iterations >= 2) {
+// 					clearInterval(interval);
+// 				}
+// 				iterations += 1/10; 
+// 			}, 50);
+// 		}
+// 	}
+// }
+
+console.log("milieu");
 
 export var pourcentO = Math.round(100*countO/streetsCount);
 export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
 export var pourcentM = Math.round(100*countM/streetsCount);
 export var pourcentF = Math.round(100*countF/streetsCount);
 
-
-//afficher pourcentage Other
-document.getElementById("pourcentO").innerHTML = pourcentO;
-
-//afficher pourcentage Personnes
-document.getElementById("pourcentP").innerHTML = pourcentP;
-
-//afficher pourcentage Masculins
-document.getElementById("pourcentM").innerHTML = pourcentM;
-
-//afficher pourcentage Feminins
-document.getElementById("pourcentF").innerHTML = pourcentF;
-
-
+console.log("fin");
 
 console.log("Femmes : " + pourcentF + "%")
 console.log("Other : " + pourcentO + "%")
