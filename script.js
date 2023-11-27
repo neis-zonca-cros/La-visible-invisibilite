@@ -1,9 +1,17 @@
 var objectsJSON;
 var uniqueStreets;
 var streetsCount;
+var streetsCountStr;
 var countM = parseInt(0);
 var countF = parseInt(0);
 var countO = parseInt(0);
+const numbers = "0123456789";
+const target = document.getElementById("numberOfStreets");
+const COMMON_STREET_WORDS = [
+    "Rue", "de", "la", "le", "du", "Avenue", "Chemin", "Route", "Tunnel",
+    "Allée", "Place", "Voie", "Boulevard", "des", "Impasse", "Quai",
+    "Grande", "et", "du", "les", "", "Montée"
+];
 const queryRequest = `
 [out:json];
 area(id:3600120965)->.searchArea;
@@ -44,6 +52,7 @@ async function getStreetArray(queryRequest) {
 			if (data && data.elements) {
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
 				streetsCount = uniqueStreets.length;
+				streetsCountStr = streetsCount.toString();
 				return (uniqueStreets);
 			} else {
 				throw new Error('Invalid Data Format');
@@ -55,25 +64,36 @@ async function getStreetArray(queryRequest) {
 }
 
 
+function loaderStr(target) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		target.innerText = target.innerText.split("")
+		.map((number, index) => {
+			if (index < iterations) {
+				return streetsCountStr[index];
+			}
+			return numbers[Math.floor(Math.random() * 10)]
+		})
+		.join("");
+		if (iterations >= streetsCountStr.length) {
+			clearInterval(interval);
+		}
+
+		iterations += 1/10; 
+	}, 50);
+}
+
 async function countGenre() {
-	let streets = await getStreetArray(queryRequest);
-	
+	let streets = getStreetArray(queryRequest);
+	loaderStr(target);
+	document.getElementById("numberOfStreets").onmouseover = event => {
+		loaderStr(event.target);
+	}
+
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|L'|S'|D'|Saint-)|-/).filter(Boolean);
 		for (let j = 0; j < tempTab.length; j++) {
-			if (
-				//to do a mettre dans une constante + rajouter les nombres
-				tempTab[j] === "Rue" || tempTab[j] === "de" ||
-				tempTab[j] === "la" || tempTab[j] === "le" ||
-				tempTab[j] === "du" || tempTab[j] === "Avenue" ||
-				tempTab[j] === "Chemin" || tempTab[j] === "Route" ||
-				tempTab[j] === "Tunnel" || tempTab[j] === "Allée" ||
-				tempTab[j] === "Place" || tempTab[j] === "Voie" ||
-				tempTab[j] === "Boulevard" || tempTab[j] === "des" ||
-				tempTab[j] === "Impasse" || tempTab[j] === "Quai" ||
-				tempTab[j] === "Grande" || tempTab[j] === "et" ||
-				tempTab[j] === "du" || tempTab[j] === "les" || 
-				tempTab[j] == "" || tempTab[j] === "Montée") {
+			if (COMMON_STREET_WORDS.includes(tempTab[j])) {
 				continue;
 			} else {
 				let indexNameIn = objectsJSON.findIndex(obj => (obj.name.charAt(0).toLowerCase() + obj.name.slice(1)) === (tempTab[j].charAt(0).toLowerCase() + tempTab[j].slice(1)));
@@ -95,15 +115,19 @@ async function countGenre() {
 	}
 }
 
-
 await countGenre();
+document.getElementById("numberOfStreets").innerHTML = streetsCountStr;
+console.log(streetsCountStr);
+for (let i=0; i<4; i++) {
+	loaderStr(target);
+}
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
-var pourcentO = Math.round(100*countO/streetsCount);
-var pourcentP = Math.round(100*(countM+countF)/streetsCount);
-var pourcentM = Math.round(100*countM/streetsCount);
-var pourcentF = Math.round(100*countF/streetsCount);
+var pourcentO = 100*countO/streetsCount;
+var pourcentP = 100*(countM+countF)/streetsCount;
+var pourcentM = 100*countM/streetsCount;
+var pourcentF = 100*countF/streetsCount;
 console.log("Femmes : " + pourcentF)
 console.log("Other : " + pourcentO)
 console.log("Persons : " + pourcentP)
