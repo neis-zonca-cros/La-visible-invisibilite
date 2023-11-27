@@ -56,10 +56,19 @@ async function getStreetArray(queryRequest) {
 
 
 async function countGenre() {
-	let streets = getStreetArray(queryRequest);
-	while (!streets) {
-		
-	}
+	let streets = await getStreetArray(queryRequest);
+	// while (!streets) {
+	// 	let uniqueNumber = "";
+
+	// 	while (uniqueNumber.length < 4) {
+	// 		let digit = Math.floor(Math.random() * 10).toString();
+
+	// 		if (!uniqueNumber.includes(digit)) {
+	// 			uniqueNumber += digit;
+	// 		}
+	// 	}
+	// 	document.getElementById("numberOfStreets").innerHTML = uniqueNumber;
+	// }
 
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|L'|S'|D'|Saint-)|-/).filter(Boolean);
@@ -103,3 +112,11 @@ await countGenre();
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
+var pourcentO = 100*countO/streetsCount;
+var pourcentP = 100*(countM+countF)/streetsCount;
+var pourcentM = 100*countM/streetsCount;
+var pourcentF = 100*countF/streetsCount;
+console.log("Femmes : " + pourcentF)
+console.log("Other : " + pourcentO)
+console.log("Persons : " + pourcentP)
+console.log("Hommes : " + pourcentM)
