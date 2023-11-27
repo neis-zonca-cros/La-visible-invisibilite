@@ -1,5 +1,5 @@
 //création de 49 rond container: noms autres
-for (let i = 0; i<50; i++){
+for (let i = 0; i<pourcentO.length; i++){
     var rond = document.createElement('div');
     rond.id = "rond" + i;
     rond.dataset.aos="zoom-in";
