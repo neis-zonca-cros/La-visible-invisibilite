@@ -7,11 +7,15 @@ var countF = parseInt(0);
 var countO = parseInt(0);
 const numbers = "0123456789";
 const target = document.getElementById("numberOfStreets");
+
+//Mot de liaisons des rues à skip
 const COMMON_STREET_WORDS = [
     "Rue", "de", "la", "le", "du", "Avenue", "Chemin", "Route", "Tunnel",
     "Allée", "Place", "Voie", "Boulevard", "des", "Impasse", "Quai",
     "Grande", "et", "du", "les", "", "Montée"
 ];
+
+//Syntaxe de la request à faire pour utiliser l'API
 const queryRequest = `
 [out:json];
 area(id:3600120965)->.searchArea;
@@ -21,6 +25,7 @@ area(id:3600120965)->.searchArea;
 out;
 `;
 
+//Récupère la base de donnée des prénoms et le transforme en un objet map
 await fetch('Liste_Prenoms.json')
 	.then(response => {
 		if (!response.ok) {
@@ -32,13 +37,12 @@ await fetch('Liste_Prenoms.json')
 		for (let i=0; i<data.length; i++) {
 			mapObjects.set(data[i].name.charAt(0).toLowerCase() + data[i].name.slice(1), data[i].genre);
 		}
-		console.log(mapObjects);
 	})
 	.catch(error => console.error('Error loading listePrenoms.json:', error));
 
 
 
-
+//Fonction qui fait la requête à l'API
 async function getStreetArray(queryRequest) {
 	return fetch("https://overpass-api.de/api/interpreter", {
 		method: 'POST',
@@ -53,6 +57,7 @@ async function getStreetArray(queryRequest) {
 		})
 		.then((data) => {
 			if (data && data.elements) {
+				//Fait un tableau de noms de rue unique sans doublons
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
 				streetsCount = uniqueStreets.length;
 				streetsCountStr = streetsCount.toString();
@@ -67,27 +72,7 @@ async function getStreetArray(queryRequest) {
 }
 
 
-function loaderStr(target) {
-	console.log("tout de suite");
-	let iterations = 0;
-	let interval = setInterval(() => {
-		console.log("tard")
-		target.innerText = target.innerText.split("")
-		.map((number, index) => {
-			if (index < iterations) {
-				return streetsCountStr[index];
-			}
-			return numbers[Math.floor(Math.random() * 10)]
-		})
-		.join("");
-		if (iterations >= 4) {
-			clearInterval(interval);
-		}
-
-		iterations += 1/10; 
-	}, 50);
-}
-
+//Fonction pour animer les chiffres en attendant la valeur
 function loaderGlobal(target) {
 	let iterations = 0;
 	let interval = setInterval(() => {
@@ -104,14 +89,39 @@ function loaderGlobal(target) {
 	}, 50);
 }
 
+//Fonction pour animer les chiffres lorsqu'on à la valeur
+function loaderStr(target) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		target.innerText = target.innerText.split("")
+		.map((number, index) => {
+			if (index < iterations) {
+				return streetsCountStr[index];
+			}
+			return numbers[Math.floor(Math.random() * 10)]
+		})
+		.join("");
+		if (iterations >= 4) {
+			clearInterval(interval);
+		}
+
+		iterations += 1/10; 
+	}, 50);
+}
+
+
+//Fonction pour compter le genre des rues
 async function countGenre() {
 	loaderGlobal(target);
+	//Attends la requete API et mets le tableau de rue uniques dans streets
 	let streets = await getStreetArray(queryRequest);
 	loaderStr(target);
-	// document.getElementById("numberOfStreets").onmouseover = event => {
-	// 	loaderStr(event.target);
-	// }
+	document.getElementById("numberOfStreets").onmouseover = event => {
+		loaderStr(event.target);
+	}
 
+	//Parcours tout notre tableau de rue, 
+	//et check si c'est compris dans notre map et check son genre
 	for (let i = 0; i < streets.length; i++) {
 		let tempTab = streets[i].split(/\s|(?<=l'|s'|d'|L'|S'|D'|Saint-)|-/).filter(Boolean);
 		for (let j = 0; j < tempTab.length; j++) {
@@ -127,7 +137,7 @@ async function countGenre() {
 					break;
 				}
 				if (j + 1 >= tempTab.length) {
-					console.log(tempTab);
+					// console.log(tempTab);
 					countO += 1;
 				}
 			}
@@ -138,10 +148,6 @@ async function countGenre() {
 
 await countGenre();
 document.getElementById("numberOfStreets").innerHTML = streetsCountStr;
-console.log("Length streets count : " + streetsCountStr.length);
-// for (let i=0; i<4; i++) {
-// 	loaderStr(target);
-// }
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
@@ -149,7 +155,7 @@ export var pourcentO = Math.round(100*countO/streetsCount);
 export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
 export var pourcentM = Math.round(100*countM/streetsCount);
 export var pourcentF = Math.round(100*countF/streetsCount);
-// console.log("Femmes : " + pourcentF)
-// console.log("Other : " + pourcentO)
-// console.log("Persons : " + pourcentP)
-// console.log("Hommes : " + pourcentM)
+console.log("Femmes : " + pourcentF + "%")
+console.log("Other : " + pourcentO + "%")
+console.log("Persons : " + pourcentP + "%")
+console.log("Hommes : " + pourcentM + "%")
