@@ -151,10 +151,44 @@ document.getElementById("numberOfStreets").innerHTML = streetsCountStr;
 console.log("Féminin : " + countF);
 console.log("Masculin : " + countM);
 console.log("Other : " + countO);
+
+
+function loader2digit(target) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		let nbr = "";
+		for (let i=0; i<2; i++) {
+			nbr += Math.floor(Math.random() * 10).toString();
+		}
+		target.innerText = nbr;
+		if (iterations >= 4) {
+			clearInterval(interval);
+		}
+
+		iterations += 1/10; 
+	}, 50);
+}
+
 export var pourcentO = Math.round(100*countO/streetsCount);
 export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
 export var pourcentM = Math.round(100*countM/streetsCount);
 export var pourcentF = Math.round(100*countF/streetsCount);
+
+
+//afficher pourcentage Other
+document.getElementById("pourcentO").innerHTML = pourcentO;
+
+//afficher pourcentage Personnes
+document.getElementById("pourcentP").innerHTML = pourcentP;
+
+//afficher pourcentage Masculins
+document.getElementById("pourcentM").innerHTML = pourcentM;
+
+//afficher pourcentage Feminins
+document.getElementById("pourcentF").innerHTML = pourcentF;
+
+
+
 console.log("Femmes : " + pourcentF + "%")
 console.log("Other : " + pourcentO + "%")
 console.log("Persons : " + pourcentP + "%")
