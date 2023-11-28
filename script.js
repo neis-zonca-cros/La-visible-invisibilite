@@ -11,11 +11,13 @@ var pourcentM = Math.round(100*countM/streetsCount);
 var pourcentF = Math.round(100*countF/streetsCount);
 
 const numbers = "0123456789";
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZà"
 const targetStreets = document.getElementById("numberOfStreets");
 const targetO = document.getElementById("pourcentO");
 const targetP = document.getElementById("pourcentP");
 const targetM = document.getElementById("pourcentM");
 const targetF = document.getElementById("pourcentF");
+const targetWelcome = document.querySelector("h1");
 
 //Mot de liaisons des rues à skip
 const COMMON_STREET_WORDS = [
@@ -120,6 +122,24 @@ function loaderRightNumber(target, count, string) {
 	}, 50);
 }
 
+function loaderWelcome(target, count, string) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		target.innerText = target.innerText.split("")
+		.map((letter, index) => {
+			if (index < iterations) {
+				return string[index];
+			}
+			return alphabet[Math.floor(Math.random() * 26)]
+		})
+		.join("");
+		if (iterations >= count) {
+			clearInterval(interval);
+		}
+		iterations += 1/3; 
+	}, 50);
+}
+
 
 //Fonction pour compter le genre des rues
 async function countGenre(streets) {
@@ -190,6 +210,7 @@ loaderGlobal(targetO, 2);
 loaderGlobal(targetP, 2);
 loaderGlobal(targetM, 2);
 loaderGlobal(targetF, 1);
+loaderWelcome(targetWelcome, 16, alphabet.length)
 
 document.getElementById("numberOfStreets").onmouseover = event => {
 	loaderRightNumber(event.target, streetsCountStr.length);
