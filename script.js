@@ -9,14 +9,20 @@ var pourcentO = Math.round(100*countO/streetsCount);
 var pourcentP = Math.round(100*(countM+countF)/streetsCount);
 var pourcentM = Math.round(100*countM/streetsCount);
 var pourcentF = Math.round(100*countF/streetsCount);
+
 const numbers = "0123456789";
-const target = document.getElementById("numberOfStreets");
+const targetStreets = document.getElementById("numberOfStreets");
+const targetO = document.getElementById("pourcentO");
+const targetP = document.getElementById("pourcentP");
+const targetM = document.getElementById("pourcentM");
+const targetF = document.getElementById("pourcentF");
 
 //Mot de liaisons des rues à skip
 const COMMON_STREET_WORDS = [
     "Rue", "de", "la", "le", "du", "Avenue", "Chemin", "Route", "Tunnel",
     "Allée", "Place", "Voie", "Boulevard", "des", "Impasse", "Quai",
-    "Grande", "et", "du", "les", "", "Montée"
+    "Grande", "et", "du", "les", "", "Montée", "La", "Le", "Du", "Les",
+	"rue", "route", "Des"
 ];
 
 //Syntaxe de la request à faire pour utiliser l'API
@@ -79,15 +85,15 @@ async function getStreetArray(queryRequest) {
 
 
 //Fonction pour animer les chiffres en attendant la valeur
-function loaderGlobal(target) {
+function loaderGlobal(target, count) {
 	let iterations = 0;
 	let interval = setInterval(() => {
 		let nbr = "";
-		for (let i=0; i<4; i++) {
+		for (let i=0; i<count; i++) {
 			nbr += Math.floor(Math.random() * 10).toString();
 		}
 		target.innerText = nbr;
-		if (iterations >= 4) {
+		if (iterations >= count) {
 			clearInterval(interval);
 		}
 
@@ -96,18 +102,18 @@ function loaderGlobal(target) {
 }
 
 //Fonction pour animer les chiffres lorsqu'on à la valeur
-function loaderStr(target) {
+function loaderRightNumber(target, count, string) {
 	let iterations = 0;
 	let interval = setInterval(() => {
 		target.innerText = target.innerText.split("")
 		.map((number, index) => {
 			if (index < iterations) {
-				return streetsCountStr[index];
+				return string[index];
 			}
 			return numbers[Math.floor(Math.random() * 10)]
 		})
 		.join("");
-		if (iterations >= streetsCountStr.length) {
+		if (iterations >= count) {
 			clearInterval(interval);
 		}
 		iterations += 1/10; 
@@ -144,10 +150,17 @@ async function countGenre(streets) {
 	console.log("Féminin : " + countF);
 	console.log("Masculin : " + countM);
 	console.log("Other : " + countO);
+
 	pourcentO = Math.round(100*countO/streetsCount);
 	pourcentP = Math.round(100*(countM+countF)/streetsCount);
 	pourcentM = Math.round(100*countM/streetsCount);
 	pourcentF = Math.round(100*countF/streetsCount);
+
+	loaderRightNumber(targetO, 2, pourcentO.toString());
+	loaderRightNumber(targetP, 2, pourcentP.toString());
+	loaderRightNumber(targetM, 2, pourcentM.toString());
+	loaderRightNumber(targetF, 1, pourcentF.toString());	
+
 	console.log("Femmes : " + pourcentF + "%")
 	console.log("Other : " + pourcentO + "%")
 	console.log("Persons : " + pourcentP + "%")
@@ -158,15 +171,20 @@ async function countGenre(streets) {
 
 
 document.getElementById("numberOfStreets").onmouseover = event => {
-	loaderStr(event.target);
+	loaderRightNumber(event.target, streetsCountStr.length);
 }
 
-loaderGlobal(target);
+loaderGlobal(targetStreets, 4);
+loaderGlobal(targetO, 2);
+loaderGlobal(targetP, 2);
+loaderGlobal(targetM, 2);
+loaderGlobal(targetF, 1);
+
+
 export async function main() {
 	let streets = await getStreetArray(queryRequest);
 	//Attends la requete API et mets le tableau de rue uniques dans streets
-	loaderStr(target);
+	console.log(streetsCountStr.length);
+	loaderRightNumber(targetStreets, streetsCountStr.length, streetsCountStr);
 	return await countGenre(streets);
 }
-
-main();
