@@ -239,3 +239,25 @@ h7 {
 	display: flex;
 	top: 0;
 }
+
+.menu {
+	height: 50%;
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+
+
+
+}
+
+.menu svg {
+	width: calc(100 * var(--res));
+	height: auto;
+	cursor: pointer;
+	transition: 0.4s transform linear;
+	transform: rotate(360deg);
+
+
+}
