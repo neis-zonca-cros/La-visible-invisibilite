@@ -1,9 +1,10 @@
-import { pourcentF } from './script.js';
-import { pourcentM } from './script.js';
-import { pourcentO } from './script.js';
-import { pourcentP } from './script.js';
+import { main } from './script.js';
 
-
+var pourcents = await main();
+var pourcentF = pourcents.pourcentF;
+var pourcentM = pourcents.pourcentM;
+var pourcentO = pourcents.pourcentO;
+var pourcentP = pourcents.pourcentP;
 //Fonction aléatoire pour les ronds 
 var divRond = ["rond", "rondp", "rondh", "rondf", "rondff", "rondhh"]
 var containerRond = [".container", ".container1", ".container2", ".container3", ".container4", ".container5"]

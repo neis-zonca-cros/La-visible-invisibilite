@@ -5,10 +5,10 @@ var streetsCountStr;
 var countM = parseInt(0);
 var countF = parseInt(0);
 var countO = parseInt(0);
-export var pourcentO = Math.round(100*countO/streetsCount);
-export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
-export var pourcentM = Math.round(100*countM/streetsCount);
-export var pourcentF = Math.round(100*countF/streetsCount);
+var pourcentO = Math.round(100*countO/streetsCount);
+var pourcentP = Math.round(100*(countM+countF)/streetsCount);
+var pourcentM = Math.round(100*countM/streetsCount);
+var pourcentF = Math.round(100*countF/streetsCount);
 const numbers = "0123456789";
 const target = document.getElementById("numberOfStreets");
 
@@ -151,7 +151,9 @@ async function countGenre(streets) {
 	console.log("Femmes : " + pourcentF + "%")
 	console.log("Other : " + pourcentO + "%")
 	console.log("Persons : " + pourcentP + "%")
-	console.log("Hommes : " + pourcentM + "%")	
+	console.log("Hommes : " + pourcentM + "%")
+
+	return { pourcentO, pourcentP, pourcentM, pourcentF };
 }
 
 
@@ -160,11 +162,11 @@ document.getElementById("numberOfStreets").onmouseover = event => {
 }
 
 loaderGlobal(target);
-let asyncAnim = (async () => {
+export async function main() {
 	let streets = await getStreetArray(queryRequest);
 	//Attends la requete API et mets le tableau de rue uniques dans streets
-	await countGenre(streets);
 	loaderStr(target);
-});
+	return await countGenre(streets);
+}
 
-asyncAnim();
+main();
