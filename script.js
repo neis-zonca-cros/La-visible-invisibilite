@@ -18,7 +18,7 @@ const targetP = document.getElementById("pourcentP");
 const targetM = document.getElementById("pourcentM");
 const targetF = document.getElementById("pourcentF");
 const targetWelcome = document.querySelector("h1");
-const welcomeMsg = document.getElementById("welcomeMsg").textContent;
+const welcomeMsg = document.getElementById("welcomeMsg").innerText;
 
 //Mot de liaisons des rues à skip
 const COMMON_STREET_WORDS = [
@@ -137,7 +137,7 @@ function loaderWelcome(target, count, string) {
 		if (iterations >= count) {
 			clearInterval(interval);
 		}
-		iterations += 1/3; 
+		iterations += 1; 
 	}, 30);
 }
 
@@ -211,7 +211,7 @@ loaderGlobal(targetO, 2);
 loaderGlobal(targetP, 2);
 loaderGlobal(targetM, 2);
 loaderGlobal(targetF, 1);
-loaderWelcome(targetWelcome, alphabet.length, welcomeMsg);
+loaderWelcome(targetWelcome, welcomeMsg.length, welcomeMsg);
 
 document.getElementById("numberOfStreets").onmouseover = event => {
 	loaderRightNumber(event.target, streetsCountStr.length, streetsCountStr);
