@@ -35,15 +35,14 @@ aleatoire (pourcentM, divRond[5], containerRond[5]);
 
 
 var bouttonMenu = document.getElementById("headermenu");
-console.log(bouttonMenu)
 bouttonMenu.addEventListener("click", function() {
     const navmenu = document.querySelector(".navmenu");
-    console.log(navmenu);
-
-    if (navmenu.classList.contains("active")){
-        navmenu.classList.remove("active");
+    if (navmenu.classList.contains('active')){
+        navmenu.classList.remove('active');
+        console.log(navmenu.classList)
     } else {
-        navmenu.classList.add("active");
+        navmenu.classList.add('active');
+        console.log(navmenu.classList)
     }
 });
 

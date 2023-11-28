@@ -241,7 +241,6 @@ h7 {
 }
 
 /*menu*/
-
 .header {
 	height: 50px;
 	width: 100%;
@@ -279,10 +278,10 @@ h7 {
 .navmenu{
 	position: fixed;
 	top: 0;
-	left: 0;
+	z-index: 5;
 	width: 300px;
 	height: 100vh;
-	background-color: #000000;
+	background-color: rgba(237, 106, 90, 0.600);
 	padding: 50px 20px; 
 	display: flex;
 	flex-direction: column;
@@ -291,24 +290,26 @@ h7 {
 	transition: 0.4s transform cubic-bezier(.17,.67,0,1.64);
 }
 
-.navmenu:active{
+.navmenu.active{
 	transform: initial;
+	
 }
 
-.navmenuOverlay {
+.navmenu.inactive{
 	position: fixed;
 	top: 0;
-	left: 0;
-	width: 100vw;
+	z-index: 5;
+	width: 300px;
 	height: 100vh;
-	background-color: #000000;
-	display: none
-
+	background-color: rgba(237, 106, 90, 0.600);
+	padding: 50px 20px; 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transform: translateX(-100%);
+	transition: 0.4s transform cubic-bezier(.17,.67,0,1.64);
 }
 
-.navmenuOverlay:active {
-	display: block;
-} 
 
 .navmenuphoto{
 	text-align: center;
@@ -331,8 +332,7 @@ h7 {
 	list-style: none;
 	margin-top: 24px;
 	margin-bottom: 24px;
-
-
+	
 
 }
 
