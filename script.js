@@ -141,15 +141,15 @@ async function countGenre(streets) {
 					break;
 				}
 				if (j + 1 >= tempTab.length) {
-					// console.log(tempTab);
+					console.log(tempTab);
 					countO += 1;
 				}
 			}
 		}
 	}
-	// console.log("Féminin : " + countF);
-	// console.log("Masculin : " + countM);
-	// console.log("Other : " + countO);
+	console.log("Féminin : " + countF);
+	console.log("Masculin : " + countM);
+	console.log("Other : " + countO);
 
 	pourcentO = Math.round(100*countO/streetsCount);
 	pourcentP = Math.round(100*(countM+countF)/streetsCount);
@@ -161,10 +161,10 @@ async function countGenre(streets) {
 	loaderRightNumber(targetM, 2, pourcentM.toString());
 	loaderRightNumber(targetF, 1, pourcentF.toString());	
 
-	// console.log("Femmes : " + pourcentF + "%")
-	// console.log("Other : " + pourcentO + "%")
-	// console.log("Persons : " + pourcentP + "%")
-	// console.log("Hommes : " + pourcentM + "%")
+	console.log("Femmes : " + pourcentF + "%")
+	console.log("Other : " + pourcentO + "%")
+	console.log("Persons : " + pourcentP + "%")
+	console.log("Hommes : " + pourcentM + "%")
 
 	return { pourcentO, pourcentP, pourcentM, pourcentF };
 }

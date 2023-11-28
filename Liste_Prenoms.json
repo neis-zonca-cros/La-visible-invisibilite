@@ -51876,6 +51876,514 @@
 		"genre": "m"
 	},
 	{
+		"name": "Montaigne",
+		"genre": "m"
+	},
+	{
+		"name": "Turbil",
+		"genre": "m"
+	},
+	{
+		"name": "Piperoux",
+		"genre": "m"
+	},
+	{
+		"name": "Denuzière",
+		"genre": "f"
+	},
+	{
+		"name": "Gilibert",
+		"genre": "m"
+	},
+	{
+		"name": "Sévigné",
+		"genre": "f"
+	},
+	{
+		"name": "Royer",
+		"genre": "m"
+	},
+	{
+		"name": "Rabelais",
+		"genre": "m"
+	},
+	{
+		"name": "Chambovet",
+		"genre": "f"
+	},
+	{
+		"name": "Wakatsuki",
+		"genre": "m"
+	},
+	{
+		"name": "Varichon",
+		"genre": "m"
+	},
+	{
+		"name": "Thénard",
+		"genre": "m"
+	},
+	{
+		"name": "Bourgelat",
+		"genre": "m"
+	},
+	{
+		"name": "Cumin",
+		"genre": "m"
+	},
+	{
+		"name": "Gerlier",
+		"genre": "m"
+	},
+	{
+		"name": "Jarente",
+		"genre": "m"
+	},
+	{
+		"name": "Appian",
+		"genre": "m"
+	},
+	{
+		"name": "Valioud",
+		"genre": "m"
+	},
+	{
+		"name": "Marietton",
+		"genre": "m"
+	},
+	{
+		"name": "Fillon",
+		"genre": "m"
+	},
+	{
+		"name": "Fillion",
+		"genre": "m"
+	},
+	{
+		"name": "Viricel",
+		"genre": "m"
+	},
+	{
+		"name": "Arloing",
+		"genre": "m"
+	},
+	{
+		"name": "Jangot",
+		"genre": "m"
+	},
+	{
+		"name": "Ampère",
+		"genre": "m"
+	},
+	{
+		"name": "Claude",
+		"genre": "m"
+	},
+	{
+		"name": "Farrère",
+		"genre": "m"
+	},
+	{
+		"name": "Esquirol",
+		"genre": "m"
+	},
+	{
+		"name": "Duhamel",
+		"genre": "m"
+	},
+	{
+		"name": "Mazard",
+		"genre": "m"
+	},
+	{
+		"name": "Bugeaud",
+		"genre": "m"
+	},
+	{
+		"name": "Galland",
+		"genre": "m"
+	},
+	{
+		"name": "Estrées",
+		"genre": "f"
+	},
+	{
+		"name": "Enghien",
+		"genre": "m"
+	},
+	{
+		"name": "Lamothe",
+		"genre": "m"
+	},
+	{
+		"name": "Dunoir",
+		"genre": "m"
+	},
+	{
+		"name": "Desaugiers",
+		"genre": "m"
+	},
+	{
+		"name": "Faidherbe",
+		"genre": "m"
+	},
+	{
+		"name": "Arnoud",
+		"genre": "m"
+	},
+	{
+		"name": "Decourtray",
+		"genre": "m"
+	},
+	{
+		"name": "Cardinal",
+		"genre": "m"
+	},
+	{
+		"name": "Parmentier",
+		"genre": "m"
+	},
+	{
+		"name": "Grillet",
+		"genre": "m"
+	},
+	{
+		"name": "Jacquier",
+		"genre": "m"
+	},
+	{
+		"name": "Chavannes",
+		"genre": "m"
+	},
+	{
+		"name": "Morellet",
+		"genre": "m"
+	},
+	{
+		"name": "Verlet",
+		"genre": "m"
+	},
+	{
+		"name": "Childebert",
+		"genre": "m"
+	},
+	{
+		"name": "Gasparin",
+		"genre": "m"
+	},
+	{
+		"name": "Lavoisier",
+		"genre": "m"
+	},
+	{
+		"name": "Laurencin",
+		"genre": "m"
+	},
+	{
+		"name": "Mourguet",
+		"genre": "m"
+	},
+	{
+		"name": "Thomassin",
+		"genre": "m"
+	},
+	{
+		"name": "Symphorien",
+		"genre": "m"
+	},
+	{
+		"name": "Godefroy",
+		"genre": "m"
+	},
+	{
+		"name": "Bichat",
+		"genre": "f"
+	},
+	{
+		"name": "Guimet",
+		"genre": "m"
+	},
+	{
+		"name": "Crépet",
+		"genre": "m"
+	},
+	{
+		"name": "Nicolaï",
+		"genre": "m"
+	},
+	{
+		"name": "Faugier",
+		"genre": "m"
+	},
+	{
+		"name": "Grillet",
+		"genre": "m"
+	},
+	{
+		"name": "Gailleton",
+		"genre": "m"
+	},
+	{
+		"name": "Garet",
+		"genre": "m"
+	},
+	{
+		"name": "Guilloud",
+		"genre": "m"
+	},
+	{
+		"name": "Ravier",
+		"genre": "m"
+	},
+	{
+		"name": "Malesherbes",
+		"genre": "m"
+	},
+	{
+		"name": "Pazzi",
+		"genre": "f"
+	},
+	{
+		"name": "Vivier",
+		"genre": "m"
+	},
+	{
+		"name": "Rancy",
+		"genre": "m"
+	},
+	{
+		"name": "Veyron",
+		"genre": "m"
+	},
+	{
+		"name": "Trarieux",
+		"genre": "m"
+	},
+	{
+		"name": "Bara",
+		"genre": "m"
+	},
+	{
+		"name": "Fiol",
+		"genre": "m"
+	},
+	{
+		"name": "Feuillat",
+		"genre": "m"
+	},
+	{
+		"name": "Aguesseau",
+		"genre": "m"
+	},
+	{
+		"name": "Chazeaux",
+		"genre": "f"
+	},
+	{
+		"name": "Godinot",
+		"genre": "m"
+	},
+	{
+		"name": "Ollier",
+		"genre": "m"
+	},
+	{
+		"name": "Thiers",
+		"genre": "m"
+	},
+	{
+		"name": "Pétrequin",
+		"genre": "m"
+	},
+	{
+		"name": "Ney",
+		"genre": "m"
+	},
+	{
+		"name": "Curtelin",
+		"genre": "m"
+	},
+	{
+		"name": "Barrême",
+		"genre": "m"
+	},
+	{
+		"name": "Chalopin",
+		"genre": "m"
+	},
+	{
+		"name": "Boyer",
+		"genre": "m"
+	},
+	{
+		"name": "Combalot",
+		"genre": "m"
+	},
+	{
+		"name": "Bonald",
+		"genre": "m"
+	},
+	{
+		"name": "Volney",
+		"genre": "m"
+	},
+	{
+		"name": "Montgolfier",
+		"genre": "m"
+	},
+	{
+		"name": "Raulin",
+		"genre": "m"
+	},
+	{
+		"name": "Cavenne",
+		"genre": "m"
+	},
+	{
+		"name": "Duphot",
+		"genre": "m"
+	},
+	{
+		"name": "Boileau",
+		"genre": "m"
+	},
+	{
+		"name": "Tourville",
+		"genre": "f"
+	},
+	{
+		"name": "Creuzet",
+		"genre": "m"
+	},
+	{
+		"name": "Rachais",
+		"genre": "m"
+	},
+	{
+		"name": "Cléberg",
+		"genre": "m"
+	},
+	{
+		"name": "Vauban",
+		"genre": "m"
+	},
+	{
+		"name": "Jaboulay",
+		"genre": "m"
+	},
+	{
+		"name": "Chaponnay",
+		"genre": "m"
+	},
+	{
+		"name": "Bossuet",
+		"genre": "m"
+	},
+	{
+		"name": "Cuvier",
+		"genre": "m"
+	},
+	{
+		"name": "Duguesclin",
+		"genre": "m"
+	},
+	{
+		"name": "Créqui",
+		"genre": "m"
+	},
+	{
+		"name": "Curie",
+		"genre": "f"
+	},
+	{
+		"name": "Crillon",
+		"genre": "m"
+	},
+	{
+		"name": "Sully",
+		"genre": "m"
+	},
+	{
+		"name": "Masséna",
+		"genre": "m"
+	},
+	{
+		"name": "Tronchet",
+		"genre": "m"
+	},
+	{
+		"name": "Vitton",
+		"genre": "m"
+	},
+	{
+		"name": "Bondy",
+		"genre": "m"
+	},
+	{
+		"name": "Chevreul",
+		"genre": "m"
+	},
+	{
+		"name": "Sèze",
+		"genre": "m"
+	},
+	{
+		"name": "Boissac",
+		"genre": "m"
+	},
+	{
+		"name": "Perrache",
+		"genre": "m"
+	},
+	{
+		"name": "Morand",
+		"genre": "m"
+	},
+	{
+		"name": "Challemel",
+		"genre": "m"
+	},
+	{
+		"name": "Baza",
+		"genre": "f"
+	},
+	{
+		"name": "Debrousse",
+		"genre": "f"
+	},
+	{
+		"name": "Longefer",
+		"genre": "m"
+	},
+	{
+		"name": "Chazay",
+		"genre": "m"
+	},
+	{
+		"name": "Laënnec",
+		"genre": "m"
+	},
+	{
+		"name": "Belissen",
+		"genre": "m"
+	},
+	{
+		"name": "Secret",
+		"genre": "m"
+	},
+	{
+		"name": "Jeunet",
+		"genre": "m"
+	},
+	{
+		"name": "Rockefeller",
+		"genre": "m"
+	},
+	{
+		"name": "Leclerc",
+		"genre": "m"
+	},
+	{
 		"name": "þórstein",
 		"genre": "m"
 	}
