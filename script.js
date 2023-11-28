@@ -60,13 +60,13 @@ async function getStreetArray(queryRequest) {
 			if (data && data.elements) {
 				//Fait un tableau de noms de rue unique sans doublons
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
-				uniqueStreets = uniqueStreets.filter(street => !/parking|n°|accès|vélos/i.test(street) && street.split(/\s+/).length > 1 && !/\d/.test(street));
+				uniqueStreets = uniqueStreets.filter(street => !/parking|n°|accès|sortie|acces|vélos/i.test(street) && street.split(/\s+/).length > 1 && !/\d/.test(street));
 				streetsCount = uniqueStreets.length;
 				streetsCountStr = streetsCount.toString();
 				return (uniqueStreets);
 			} else {
 				throw new Error('Invalid Data Format');
-			}
+			} à	
 		})
 		.catch(error => {
 			console.error('There was a problem with the fetch operation:', error);
