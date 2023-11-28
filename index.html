@@ -8,20 +8,37 @@
 </head>
 
 <body>
-	<header class = menu>
-		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-			<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-		</svg>
+	<header class = "header">
+		<div class="headermenu" onclick="toogleMenu()">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+				<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+			</svg></div>
 		  
 
 
 	</header>
 
-	<nav class = navmenu >
-		<li>Nombres de rues à Lyon</li>
+	<nav class = "navmenu" >
+		<div class = "navmenuphoto">
+			<img src="img/profil.jpg">
+		</div>
+
+		<ul class = "navtexte">
+			<li><a href ="#">Bienvenue</a></li>
+			<li><a href ="#">Nombre de rues</a></li>
+			<li><a href ="#">Nombre autre</a></li>
+			<li><a href ="#">Nombre personnes</a></li>
+			<li><a href ="#">Nombre hommes</a></li>
+			<li><a href ="#">Nombre femmes</a></li>
+			<li><a href ="#">femmes vs hommes</a></li>
+
+
+		</ul>
 
 
 	</nav>
+
+	<div class = "navmenuOverlay"></div>
 
 	<div class="blocVertical">
 		<div class="bus"><img img id="bus" src="img/bus2ombred.png"></div>

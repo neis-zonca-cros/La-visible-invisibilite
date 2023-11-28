@@ -240,24 +240,96 @@ h7 {
 	top: 0;
 }
 
-.menu {
-	height: 50%;
-	width: 100px;
+.header {
+	height: 50px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+
+}
+
+.header svg {
+	height: auto;
+	width: calc(100 * var(--res));
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 
+}
+
+
+
+.headermenu {
+	cursor: pointer;
+	transition: 0.4s transform linear; 
 
 
 
 }
 
-.menu svg {
+.headermenu:hover {
+	transform: rotate(180deg);
+
+}
+
+.navmenu {
 	width: calc(100 * var(--res));
 	height: auto;
-	cursor: pointer;
-	transition: 0.4s transform linear;
-	transform: rotate(360deg);
+
+
+}
+
+.navmenuOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #000000;
+	display: none
+
+}
+
+.navmenuOverlay:active {
+	display: block;
+
+
+} 
+
+.navmenu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 100vh;
+	padding: 50px 20px; 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transform: translateX(-100%);
+}
+
+.navmenu:active{
+	transform: initial;
+}
+
+.navmenuphoto{
+	text-align: center;
+	border-bottom: 1px;
+	padding-bottom: 16px;
+
+
+}
+
+.navmenuphoto img{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+
+
 
 
 }
