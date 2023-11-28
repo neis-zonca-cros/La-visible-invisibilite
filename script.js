@@ -141,15 +141,15 @@ async function countGenre(streets) {
 					break;
 				}
 				if (j + 1 >= tempTab.length) {
-					console.log(tempTab);
+					// console.log(tempTab);
 					countO += 1;
 				}
 			}
 		}
 	}
-	console.log("Féminin : " + countF);
-	console.log("Masculin : " + countM);
-	console.log("Other : " + countO);
+	// console.log("Féminin : " + countF);
+	// console.log("Masculin : " + countM);
+	// console.log("Other : " + countO);
 
 	pourcentO = Math.round(100*countO/streetsCount);
 	pourcentP = Math.round(100*(countM+countF)/streetsCount);
@@ -161,18 +161,29 @@ async function countGenre(streets) {
 	loaderRightNumber(targetM, 2, pourcentM.toString());
 	loaderRightNumber(targetF, 1, pourcentF.toString());	
 
-	console.log("Femmes : " + pourcentF + "%")
-	console.log("Other : " + pourcentO + "%")
-	console.log("Persons : " + pourcentP + "%")
-	console.log("Hommes : " + pourcentM + "%")
+	// console.log("Femmes : " + pourcentF + "%")
+	// console.log("Other : " + pourcentO + "%")
+	// console.log("Persons : " + pourcentP + "%")
+	// console.log("Hommes : " + pourcentM + "%")
 
 	return { pourcentO, pourcentP, pourcentM, pourcentF };
 }
 
 
-document.getElementById("numberOfStreets").onmouseover = event => {
-	loaderRightNumber(event.target, streetsCountStr.length);
+
+
+
+
+
+export async function main() {
+	let streets = await getStreetArray(queryRequest);
+	//Attends la requete API et mets le tableau de rue uniques dans streets
+	loaderRightNumber(targetStreets, streetsCountStr.length, streetsCountStr);
+	return await countGenre(streets);
 }
+
+
+/*---------------------------------*/
 
 loaderGlobal(targetStreets, 4);
 loaderGlobal(targetO, 2);
@@ -180,11 +191,6 @@ loaderGlobal(targetP, 2);
 loaderGlobal(targetM, 2);
 loaderGlobal(targetF, 1);
 
-
-export async function main() {
-	let streets = await getStreetArray(queryRequest);
-	//Attends la requete API et mets le tableau de rue uniques dans streets
-	console.log(streetsCountStr.length);
-	loaderRightNumber(targetStreets, streetsCountStr.length, streetsCountStr);
-	return await countGenre(streets);
+document.getElementById("numberOfStreets").onmouseover = event => {
+	loaderRightNumber(event.target, streetsCountStr.length);
 }
