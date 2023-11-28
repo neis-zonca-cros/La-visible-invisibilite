@@ -8,46 +8,38 @@
 </head>
 
 <body>
-	<header class = "header" >
-		<div class="headermenu" id="headermenu">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-				<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-			</svg></div>
-		  
-
-
-	</header>
-
-	<nav class = "navmenu">
-		<div class = "navmenuphoto">
-			<img src="img/profil.jpg">
+<header>
+	<nav class="menu--left" role="navigation">
+		<div class="menuToggle">
+		  <input type="checkbox"/>
+		  <span></span>
+		  <span></span>
+		  <span></span>
+		  <ul class="menuItem">
+			<li><a1 href="#slide one">Bienvenue</a1></li>
+			<li><a2 href="#slide two">Nombre de rues</a2></li>
+			<li><a3 href="#slide three">Nombre others</a3></li>
+			<li><a4 href="#slide four">Nombre personnes</a4></li>
+			<li><a5 href="#slide five">Nombre hommes</a5></li>
+			<li><a6 href="#slide six">Nombre femmes</a6></li>
+			<li><a7 href="#slide seven">Nombre femmes vs hommes</a7></li>
+		  </ul>
 		</div>
-
-		<ul class = "navtexte">
-			<li><a href ="#">Bienvenue</a></li>
-			<li><a href ="#">Nombre de rues</a></li>
-			<li><a href ="#">Nombre autre</a></li>
-			<li><a href ="#">Nombre personnes</a></li>
-			<li><a href ="#">Nombre hommes</a></li>
-			<li><a href ="#">Nombre femmes</a></li>
-			<li><a href ="#">femmes vs hommes</a></li>
+	  </nav>
 
 
-		</ul>
+</header>
 
-
-
-	</nav>
 
 
 
 	<div class="blocVertical">
 		<div class="bus"><img img id="bus" src="img/bus2ombred.png"></div>
-		<div class="slide one">
+		<div class="slide one" id="slide one">
 			<h1>Bienvenue à Lyon</h1>
 		</div>
 
-		<div class="slide two">
+		<div class="slide two" id="slide two">
 			<div class="texte2" >
 				<h2 data-aos="fade-down"
 				data-aos-easing="linear"
@@ -57,7 +49,7 @@
 			</div>
 		</div>
 
-		<div class="slide three">
+		<div class="slide three" id="slide three">
 			<div class="container"></div>
 			<h3 data-aos="fade-down"
 			data-aos-easing="linear"
@@ -67,7 +59,7 @@
 				animaux ou <h7>autres</h7></h3>
 		</div>
 
-		<div class="slide four">
+		<div class="slide four" id="slide four">
 			<div class="container1"></div>
 			<h4 data-aos="fade-down"
 			data-aos-easing="linear"
@@ -76,7 +68,7 @@
 				des noms de <h7>personnes</h7><h4>
 		</div>
 
-		<div class="slide five">
+		<div class="slide five" id="slide five">
 			<div class="container2"></div>
 			<h5 data-aos="fade-down"
 			data-aos-easing="linear"
@@ -85,7 +77,7 @@
 				<h5>
 		</div>
 
-		<div class="slide six">
+		<div class="slide six" id="slide six">
 			<div class="container3"></div>
 			<h6 data-aos="fade-down"
 			data-aos-easing="linear"
@@ -94,7 +86,7 @@
 				des noms de <h7>femmes</h7><h6>
 		</div>
 
-		<div class="slide seven">
+		<div class="slide seven" id="slide seven">
 			<div class="container4"></div>
 			<div class="container5"></div>
 

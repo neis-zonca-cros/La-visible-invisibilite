@@ -34,15 +34,3 @@ aleatoire (pourcentF, divRond[4], containerRond[4]);
 aleatoire (pourcentM, divRond[5], containerRond[5]);
 
 
-var bouttonMenu = document.getElementById("headermenu");
-bouttonMenu.addEventListener("click", function() {
-    const navmenu = document.querySelector(".navmenu");
-    if (navmenu.classList.contains('active')){
-        navmenu.classList.remove('active');
-        console.log(navmenu.classList)
-    } else {
-        navmenu.classList.add('active');
-        console.log(navmenu.classList)
-    }
-});
-
