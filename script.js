@@ -5,6 +5,10 @@ var streetsCountStr;
 var countM = parseInt(0);
 var countF = parseInt(0);
 var countO = parseInt(0);
+export var pourcentO = Math.round(100*countO/streetsCount);
+export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
+export var pourcentM = Math.round(100*countM/streetsCount);
+export var pourcentF = Math.round(100*countF/streetsCount);
 const numbers = "0123456789";
 const target = document.getElementById("numberOfStreets");
 
@@ -112,11 +116,7 @@ function loaderStr(target) {
 
 
 //Fonction pour compter le genre des rues
-async function countGenre() {
-	loaderGlobal(target);
-	//Attends la requete API et mets le tableau de rue uniques dans streets
-	let streets = await getStreetArray(queryRequest);
-	loaderStr(target);
+async function countGenre(streets) {
 
 	// Parcours tout notre tableau de rue, 
 	// et check si c'est compris dans notre map et check son genre
@@ -141,6 +141,17 @@ async function countGenre() {
 			}
 		}
 	}
+	console.log("Féminin : " + countF);
+	console.log("Masculin : " + countM);
+	console.log("Other : " + countO);
+	pourcentO = Math.round(100*countO/streetsCount);
+	pourcentP = Math.round(100*(countM+countF)/streetsCount);
+	pourcentM = Math.round(100*countM/streetsCount);
+	pourcentF = Math.round(100*countF/streetsCount);
+	console.log("Femmes : " + pourcentF + "%")
+	console.log("Other : " + pourcentO + "%")
+	console.log("Persons : " + pourcentP + "%")
+	console.log("Hommes : " + pourcentM + "%")	
 }
 
 
@@ -148,18 +159,12 @@ document.getElementById("numberOfStreets").onmouseover = event => {
 	loaderStr(event.target);
 }
 
+loaderGlobal(target);
+let asyncAnim = (async () => {
+	let streets = await getStreetArray(queryRequest);
+	//Attends la requete API et mets le tableau de rue uniques dans streets
+	await countGenre(streets);
+	loaderStr(target);
+});
 
-await countGenre();
-console.log("Féminin : " + countF);
-console.log("Masculin : " + countM);
-console.log("Other : " + countO);
-
-export var pourcentO = Math.round(100*countO/streetsCount);
-export var pourcentP = Math.round(100*(countM+countF)/streetsCount);
-export var pourcentM = Math.round(100*countM/streetsCount);
-export var pourcentF = Math.round(100*countF/streetsCount);
-
-console.log("Femmes : " + pourcentF + "%")
-console.log("Other : " + pourcentO + "%")
-console.log("Persons : " + pourcentP + "%")
-console.log("Hommes : " + pourcentM + "%")
+asyncAnim();
