@@ -8,7 +8,7 @@ var pourcentP = pourcents.pourcentP;
 //Fonction aléatoire pour les ronds 
 var divRond = ["rond", "rondp", "rondh", "rondf", "rondff", "rondhh"]
 var containerRond = [".container", ".container1", ".container2", ".container3", ".container4", ".container5"]
-function aleatoire (pourcent, divRond, containerRond, taillex, tailley){
+function aleatoire (pourcent, divRond, containerRond){
     for (let i = 0; i<pourcent; i++){
         var rondGx = document.createElement('div');
         rondGx.id = divRond + i;
@@ -26,10 +26,24 @@ function aleatoire (pourcent, divRond, containerRond, taillex, tailley){
     }
 }
 
-console.log(aleatoire (pourcentO, divRond[0], containerRond[0]));
+aleatoire (pourcentO, divRond[0], containerRond[0]);
 aleatoire (pourcentP, divRond[1], containerRond[1]);
 aleatoire (pourcentM, divRond[2], containerRond[2]);
 aleatoire (pourcentF, divRond[3], containerRond[3]);
 aleatoire (pourcentF, divRond[4], containerRond[4]);
 aleatoire (pourcentM, divRond[5], containerRond[5]);
+
+
+var bouttonMenu = document.getElementById("headermenu");
+console.log(bouttonMenu)
+bouttonMenu.addEventListener("click", function() {
+    const navmenu = document.querySelector(".navmenu");
+    console.log(navmenu);
+
+    if (navmenu.classList.contains("active")){
+        navmenu.classList.remove("active");
+    } else {
+        navmenu.classList.add("active");
+    }
+});
 
