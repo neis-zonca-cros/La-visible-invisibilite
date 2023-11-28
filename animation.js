@@ -3,6 +3,8 @@ import { pourcentM } from './script.js';
 import { pourcentO } from './script.js';
 import { pourcentP } from './script.js';
 
+
+//Fonction aléatoire pour les ronds 
 var divRond = ["rond", "rondp", "rondh", "rondf", "rondff", "rondhh"]
 var containerRond = [".container", ".container1", ".container2", ".container3", ".container4", ".container5"]
 function aleatoire (pourcent, divRond, containerRond, taillex, tailley){
