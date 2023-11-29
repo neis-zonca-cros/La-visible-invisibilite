@@ -291,6 +291,26 @@ h8 {
 	  color: #232323;
 	  transition: all 0.3s ease;
 	}
+	img {
+		border-radius: 50%;
+		width: 100px;
+		height: auto;
+		position: relative;
+		left: 40px; 
+		text-align: center;
+		
+
+
+	}
+	a1 {
+		text-decoration: none;
+		font-family: "Targa";
+		color: #232323;
+		transition: all 0.3s ease;
+		font-size: 10px;
+		padding-top: 50px;
+	
+	  }
 
 
 
@@ -368,26 +388,8 @@ h8 {
 	  font-size: 15px;
 
 	}
-	img {
-		border-radius: 50%;
-		width: 100px;
-		height: auto;
-		position: relative;
-		left: 40px; 
-		text-align: center;
-		
 
 
-	}
-	a1 {
-		text-decoration: none;
-		font-family: "Targa";
-		color: #232323;
-		transition: all 0.3s ease;
-		font-size: 10px;
-		padding-top: 50px;
-	
-	  }
   }
   
 .menu--left {
