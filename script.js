@@ -1,3 +1,5 @@
+import { loaderAll, loaderRightNumber} from './animation.js';
+
 var mapObjects = new Map();
 var uniqueStreets;
 var streetsCount;
@@ -10,15 +12,12 @@ var pourcentP = Math.round(100*(countM+countF)/streetsCount);
 var pourcentM = Math.round(100*countM/streetsCount);
 var pourcentF = Math.round(100*countF/streetsCount);
 
-const numbers = "0123456789";
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZà! ";
 const targetStreets = document.getElementById("numberOfStreets");
 const targetO = document.getElementById("pourcentO");
 const targetP = document.getElementById("pourcentP");
 const targetM = document.getElementById("pourcentM");
 const targetF = document.getElementById("pourcentF");
-const targetWelcome = document.querySelector("h1");
-const welcomeMsg = document.getElementById("welcomeMsg").innerText;
+
 
 //Mot de liaisons des rues à skip
 const COMMON_STREET_WORDS = [
@@ -87,61 +86,6 @@ async function getStreetArray(queryRequest) {
 }
 
 
-//Fonction pour animer les chiffres en attendant la valeur
-function loaderGlobal(target, count) {
-	let iterations = 0;
-	let interval = setInterval(() => {
-		let nbr = "";
-		for (let i=0; i<count; i++) {
-			nbr += Math.floor(Math.random() * 10).toString();
-		}
-		target.innerText = nbr;
-		if (iterations >= count) {
-			clearInterval(interval);
-		}
-
-		iterations += 1/10; 
-	}, 50);
-}
-
-//Fonction pour animer les chiffres lorsqu'on à la valeur
-function loaderRightNumber(target, count, string) {
-	let iterations = 0;
-	let interval = setInterval(() => {
-		target.innerText = target.innerText.split("")
-		.map((number, index) => {
-			if (index < iterations) {
-				return string[index];
-			}
-			return numbers[Math.floor(Math.random() * 10)]
-		})
-		.join("");
-		if (iterations >= count) {
-			clearInterval(interval);
-		}
-		iterations += 1/10; 
-	}, 50);
-}
-
-function loaderWelcome(target, count, string) {
-	let iterations = 0;
-	let interval = setInterval(() => {
-		target.innerText = target.innerText.split("")
-		.map((letter, index) => {
-			if (index < iterations) {
-				return string[index];
-			}
-			return alphabet[Math.floor(Math.random() * 29)]
-		})
-		.join("");
-		if (iterations >= count) {
-			clearInterval(interval);
-		}
-		iterations += 1; 
-	}, 30);
-}
-
-
 //Fonction pour compter le genre des rues
 async function countGenre(streets) {
 
@@ -206,13 +150,8 @@ export async function main() {
 
 /*---------------------------------*/
 
-loaderGlobal(targetStreets, 4);
-loaderGlobal(targetO, 2);
-loaderGlobal(targetP, 2);
-loaderGlobal(targetM, 2);
-loaderGlobal(targetF, 1);
-loaderWelcome(targetWelcome, welcomeMsg.length, welcomeMsg);
+loaderAll();
 
 document.getElementById("numberOfStreets").onmouseover = event => {
-	loaderRightNumber(event.target, streetsCountStr.length, streetsCountStr);
+	loaderRightNumber(event.target, streetsCountStr.toString().length, streetsCountStr);
 }
