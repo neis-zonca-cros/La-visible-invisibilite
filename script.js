@@ -196,13 +196,13 @@ function loaderWelcome(target, count, string) {
 			if (index < iterations) {
 				return string[index];
 			}
-			return alphabet[Math.floor(Math.random() * 29)]
+			return alphabet[Math.floor(Math.random() * 28)]
 		})
 		.join("");
 		if (iterations >= count) {
 			clearInterval(interval);
 		}
-		iterations += 1; 
+		iterations += 1/2; 
 	}, 30);
 }
 
