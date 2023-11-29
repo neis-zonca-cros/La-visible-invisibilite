@@ -280,25 +280,123 @@ h8 {
 .menuIcon {
     display: block;
     cursor: pointer;
-    /* autres styles si nécessaires */
+    position: fixed;
+    z-index: 6;
+
 }
 
 /* Styles pour le SVG de l'icône du menu */
 .menuIcon svg {
-    width: 24px; /* ajuste la largeur selon tes besoins */
-    height: 24px; /* ajuste la hauteur selon tes besoins */
-    /* autres styles si nécessaires */
+	margin-top: 20px;
+	margin-left: 20px;
+    width: 50px;
+    height: 50px; 
+
 }
 
 /* Styles pour le menu */
 .menuItem {
-    display: none; /* Masque le menu par défaut */
-    /* Autres styles du menu (position, arrière-plan, etc.) */
+	display: flex;
+	position: fixed;
+	margin: 0px;
+    width: 250px;
+	height: 500px;
+	list-style-type: none;
+	font-size: 15px;
+	text-align: center;
+	background-color: rgba(249,245,234, 0.900);
+	z-index: 5;
+	flex-direction: column;
+
+}
+
+li{
+	text-decoration: none;
+	position: relative;
+	top: 10vh;
+	font-family: 'Targa';
+	font-size: 15px;
+	
+
 }
 
 .profil {
-    width: 50px; /* Ajuste la largeur souhaitée */
-    height: 50px; /* Ajuste la hauteur souhaitée */
-    border-radius: 50%; /* Pour arrondir l'image */
-    /* Autres styles pour l'image de profil, si nécessaire */
+    width: calc(150 * var(--res)); 
+    height: auto; 
+    border-radius: 50%; 
+	padding-bottom: 20px;
+
+}
+
+.a1{
+	text-decoration: none;
+	font-family: "Targa";
+	color: #232323;
+	transition: all 0.3s ease;
+	font-size: 10px;
+	padding-top: 50px;
+
+
+}
+
+.a2{
+	text-decoration: none;
+	font-family: "Targa";
+	color: #232323;
+	transition: all 0.3s ease;
+	font-size: 30px;
+
+}
+
+.a3{
+	text-decoration: none;
+	font-family: "Targa";
+	color: #232323;
+	transition: all 0.3s ease;
+	padding-top: 20px;
+
+}
+
+.a4{
+	text-decoration: none;
+	font-family: "Targa";
+	color: rgba(244, 184, 81, 0.700);
+	transition: all 0.3s ease;
+
+
+
+}
+
+.a5{
+	text-decoration: none;
+	font-family: "Targa";
+	color: rgba(237, 106, 90, 0.600);
+	transition: all 0.3s ease;
+
+}
+
+.a6{
+	text-decoration: none;
+	font-family: "Targa";
+	color: rgba(81, 45, 56, 0.600);
+	transition: all 0.3s ease;
+
+}
+
+.a7{
+	text-decoration: none;
+	font-family: "Targa";
+	color: rgba(135, 186, 171, 0.800);
+	transition: all 0.3s ease;
+
+}
+
+.a8{
+	text-decoration: none;
+	font-family: "Targa";
+	color: rgba(0, 0, 0, 1);
+	transition: all 0.3s ease;
+
+
+
 }
