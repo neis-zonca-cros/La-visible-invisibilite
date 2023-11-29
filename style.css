@@ -298,6 +298,8 @@ h8 {
 .menuItem {
 	display: flex;
 	position: fixed;
+	padding-top: 60px;
+	padding-left: 0px;
 	margin: 0px;
     width: 250px;
 	height: 500px;
@@ -307,24 +309,26 @@ h8 {
 	background-color: rgba(249,245,234, 0.900);
 	z-index: 5;
 	flex-direction: column;
+	transform: 0% 0%;
+	transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 
 }
 
 li{
 	text-decoration: none;
 	position: relative;
-	top: 10vh;
 	font-family: 'Targa';
 	font-size: 15px;
+	padding-bottom: 15px;
 	
 
 }
 
 .profil {
-    width: calc(150 * var(--res)); 
+    width: 100px; 
     height: auto; 
     border-radius: 50%; 
-	padding-bottom: 20px;
+	
 
 }
 
@@ -362,8 +366,6 @@ li{
 	font-family: "Targa";
 	color: rgba(244, 184, 81, 0.700);
 	transition: all 0.3s ease;
-
-
 
 }
 
