@@ -1,5 +1,3 @@
-import { loaderAll, loaderRightNumber} from './animation.js';
-
 var mapObjects = new Map();
 var uniqueStreets;
 var streetsCount;
@@ -17,6 +15,10 @@ const targetO = document.getElementById("pourcentO");
 const targetP = document.getElementById("pourcentP");
 const targetM = document.getElementById("pourcentM");
 const targetF = document.getElementById("pourcentF");
+const numbers = "0123456789";
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZà! ";
+const targetWelcome = document.querySelector("h1");
+const welcomeMsg = document.getElementById("welcomeMsg").innerText;
 
 
 //Mot de liaisons des rues à skip
@@ -135,10 +137,7 @@ async function countGenre(streets) {
 }
 
 
-
-
-
-
+/*---------------------------------*/
 
 export async function main() {
 	let streets = await getStreetArray(queryRequest);
@@ -147,8 +146,75 @@ export async function main() {
 	return await countGenre(streets);
 }
 
-
 /*---------------------------------*/
+
+
+
+/*-------Animation Loaders :-------*/
+
+//Fonction pour animer les chiffres en attendant la valeur
+function loaderGlobal(target, count) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		let nbr = "";
+		for (let i=0; i<count; i++) {
+			nbr += Math.floor(Math.random() * 10).toString();
+		}
+		target.innerText = nbr;
+		if (iterations >= count) {
+			clearInterval(interval);
+		}
+
+		iterations += 1/10; 
+	}, 50);
+}
+
+//Fonction pour animer les chiffres lorsqu'on à la valeur
+export function loaderRightNumber(target, count, string) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		target.innerText = target.innerText.split("")
+		.map((number, index) => {
+			if (index < iterations) {
+				return string[index];
+			}
+			return numbers[Math.floor(Math.random() * 10)]
+		})
+		.join("");
+		if (iterations >= count) {
+			clearInterval(interval);
+		}
+		iterations += 1/10; 
+	}, 50);
+}
+
+function loaderWelcome(target, count, string) {
+	let iterations = 0;
+	let interval = setInterval(() => {
+		target.innerText = target.innerText.split("")
+		.map((letter, index) => {
+			if (index < iterations) {
+				return string[index];
+			}
+			return alphabet[Math.floor(Math.random() * 29)]
+		})
+		.join("");
+		if (iterations >= count) {
+			clearInterval(interval);
+		}
+		iterations += 1; 
+	}, 30);
+}
+
+function loaderAll() {
+	loaderGlobal(targetStreets, 4);
+	loaderGlobal(targetO, 2);
+	loaderGlobal(targetP, 2);
+	loaderGlobal(targetM, 2);
+	loaderGlobal(targetF, 1);
+	loaderWelcome(targetWelcome, welcomeMsg.length, welcomeMsg);
+}
+
 
 loaderAll();
 
