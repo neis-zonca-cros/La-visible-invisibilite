@@ -126,7 +126,7 @@ async function countGenre(streets) {
 	loaderRightNumber(targetO, 2, pourcentO.toString());
 	loaderRightNumber(targetP, 2, pourcentP.toString());
 	loaderRightNumber(targetM, 2, pourcentM.toString());
-	loaderRightNumber(targetF, 1, pourcentF.toString());	
+	loaderRightNumber(targetF, 2, pourcentF.toString());	
 
 	console.log("Femmes : " + pourcentF + "%")
 	console.log("Other : " + pourcentO + "%")
@@ -241,5 +241,5 @@ targetM.onmouseover = event => {
 }
 
 targetF.onmouseover = event => {
-	loaderRightNumber(event.target, 1, pourcentF.toString());
+	loaderRightNumber(event.target, 2, pourcentF.toString());
 }
