@@ -10,13 +10,13 @@
 <body>
 <header>
 	<nav class="menu--left" role="navigation">
-		<div class="menuToggle">
-		  <input type="checkbox"/>
-		  <span></span>
-		  <span></span>
-		  <span></span>
-		  <ul class="menuItem">
-			<li> <img src="img/profil.jpg"></li>
+		<label class="menuIcon" id="menuIcon">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+			</svg>
+		</label>
+		<ul class="menuItem" id="menuItem">
+			<li> <img src="img/profil.jpg" class="profil"></li>
 			<li><a href="#slide one" style="color:#000000; font-size: 30px">LYON</a></li>
 			<li><a href="#slide two" style="color:#000000">Des milliers d'endroits</a></li>
 			<li><a href="#slide three" style="color:rgba(244, 184, 81, 0.700)">Les oubliés</a></li>
@@ -24,7 +24,7 @@
 			<li><a href="#slide five" style="color:rgba(81, 45, 56, 0.600)">Les visibles</a></li>
 			<li><a href="#slide six" style="color:rgba(135, 186, 171, 0.800)">Les invisibles</a></li>
 			<li><a href="#slide seven" style="color:#000000">La visible invisibilité</a></li>
-			<li style="padding-top: 30px;text-align: center;"><a1>Fait avec coeur par <br />Néïs ZONCA-CROS et Rémy CASSAGNE</a1></li>
+			<li class ="a1"><a>Fait avec coeur par <br />Néïs ZONCA-CROS et Rémy CASSAGNE</a></li>
 		  </ul>
 		</div>
 	  </nav>
@@ -100,6 +100,7 @@
 
 	<script type="module" src="./script.js"></script>
 	<script type="module" src="animation.js"></script>
+	<script type="module" src="menu.js"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js'></script>
 	<script>AOS.init();</script>
