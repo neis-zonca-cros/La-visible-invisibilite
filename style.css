@@ -250,47 +250,11 @@ h7 {
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;
-	a1 {
+	a {
 	  text-decoration: none;
 	  font-family: "Targa";
 	  color: #232323;
 	  transition: all 0.3s ease;
-	}
-	a2 {
-		text-decoration: none;
-		font-family: "Targa";
-		color: #232323;
-		transition: all 0.3s ease;
-	  }
-	a3 {
-	  text-decoration: none;
-	  font-family: "Targa";
-	  color: rgba(244, 184, 81, 0.700);
-	  transition: all 0.3s ease;
-	}
-	a4 {
-		text-decoration: none;
-		font-family: "Targa";
-		color: rgba(237, 106, 90, 0.600);
-		transition: all 0.3s ease;
-	}
-	a5 {
-		text-decoration: none;
-		font-family: "Targa";
-		color: rgba(81, 45, 56, 0.600);
-		transition: all 0.3s ease;
-	}
-	a6 {
-		text-decoration: none;
-		font-family: "Targa";
-		color: rgba(135, 186, 171, 0.800);
-		transition: all 0.3s ease;
-	}
-	a7 {
-		text-decoration: none;
-		font-family: "Targa";
-		color: #232323;
-		transition: all 0.3s ease;
 	}
 
 
@@ -354,7 +318,6 @@ h7 {
 	width: 300px;
 	padding: 50px;
 	padding-top: 125px;
-	background: #ededed;
 	list-style-type: none;
 	-webkit-font-smoothing: antialiased;
 	transform-origin: 0% 0%;
