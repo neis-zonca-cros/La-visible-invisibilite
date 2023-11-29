@@ -118,6 +118,41 @@ h7 {
 	color:#000000;
 }
 
+h8 {
+	font-family: 'Targa';
+	font-size: calc(70 * var(--res));
+	z-index: 2;
+	color: #000000;
+	text-align: center;
+	position: relative;
+	top: 140px;
+	
+}
+
+#hommes{
+	font-family: 'Targa';
+	font-size: calc(70 * var(--res));
+	z-index: 2;
+	color: rgba(81, 45, 56, 0.600);
+	text-align: center;
+	position: relative;
+
+
+
+}
+
+#femmes{
+	font-family: 'Targa';
+	font-size: calc(70 * var(--res));
+	z-index: 2;
+	color: rgba(135, 186, 171, 0.800);
+	text-align: center;
+	position: relative;
+
+
+
+}
+
 
 
 /* Paramètres des ronds random en slide 3 : noms autres */
@@ -247,7 +282,7 @@ h7 {
 	display: block;
 	position: fixed;
 	top: 50px;
-	z-index: 1;
+	z-index: 5;
 	-webkit-user-select: none;
 	user-select: none;
 	a {
@@ -256,6 +291,10 @@ h7 {
 	  color: #232323;
 	  transition: all 0.3s ease;
 	}
+
+
+
+
 
 
 	input {
@@ -298,6 +337,7 @@ h7 {
 		opacity: 1;
 		transform: rotate(45deg) translate(-2px, -1px);
 		background: #232323;
+		z-index: 5;
 		&:nth-last-child(3) {
 		  opacity: 0;
 		  transform: rotate(0deg) scale(0.2, 0.2);
@@ -315,17 +355,39 @@ h7 {
   
 .menuItem {
 	position: absolute;
-	width: 300px;
-	padding: 50px;
+	width: 200px;
+	padding: 40px;
 	padding-top: 125px;
 	list-style-type: none;
 	-webkit-font-smoothing: antialiased;
 	transform-origin: 0% 0%;
 	transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+	background-color: rgba(249,245,234, 0.900);
 	li {
 	  padding: 10px 0;
-	  font-size: 22px;
+	  font-size: 15px;
+
 	}
+	img {
+		border-radius: 50%;
+		width: 100px;
+		height: auto;
+		position: relative;
+		left: 40px; 
+		text-align: center;
+		
+
+
+	}
+	a1 {
+		text-decoration: none;
+		font-family: "Targa";
+		color: #232323;
+		transition: all 0.3s ease;
+		font-size: 10px;
+		padding-top: 50px;
+	
+	  }
   }
   
 .menu--left {
