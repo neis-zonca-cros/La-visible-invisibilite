@@ -218,6 +218,28 @@ function loaderAll() {
 
 loaderAll();
 
-document.getElementById("numberOfStreets").onmouseover = event => {
+
+
+targetWelcome.onmouseover = event => {
+	loaderWelcome(event.target, welcomeMsg.length, welcomeMsg);
+}
+
+targetStreets.onmouseover = event => {
 	loaderRightNumber(event.target, streetsCountStr.toString().length, streetsCountStr);
+}
+
+targetO.onmouseover = event => {
+	loaderRightNumber(event.target, 2, pourcentO.toString());
+}
+
+targetP.onmouseover = event => {
+	loaderRightNumber(event.target, 2, pourcentP.toString());
+}
+
+targetM.onmouseover = event => {
+	loaderRightNumber(event.target, 2, pourcentM.toString());
+}
+
+targetF.onmouseover = event => {
+	loaderRightNumber(event.target, 1, pourcentF.toString());
 }
