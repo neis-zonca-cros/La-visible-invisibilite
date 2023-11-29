@@ -1,7 +1,6 @@
 var mapObjects = new Map();
 var uniqueStreets;
 var streetsCount;
-var streetsCountStr;
 var countM = parseInt(0);
 var countF = parseInt(0);
 var countO = parseInt(0);
@@ -76,11 +75,10 @@ async function getStreetArray(queryRequest) {
 				uniqueStreets = Array.from(new Set(data.elements.map(element => element.tags.name))).filter(Boolean);
 				uniqueStreets = uniqueStreets.filter(street => !/parking|n°|accès|sortie|acces|vélos/i.test(street) && street.split(/\s+/).length > 1 && !/\d/.test(street));
 				streetsCount = uniqueStreets.length;
-				streetsCountStr = streetsCount.toString();
 				return (uniqueStreets);
 			} else {
 				throw new Error('Invalid Data Format');
-			} à	
+			}
 		})
 		.catch(error => {
 			console.error('There was a problem with the fetch operation:', error);
@@ -108,7 +106,7 @@ async function countGenre(streets) {
 					break;
 				}
 				if (j + 1 >= tempTab.length) {
-					console.log(tempTab);
+					// console.log(tempTab);
 					countO += 1;
 				}
 			}
@@ -121,12 +119,7 @@ async function countGenre(streets) {
 	pourcentO = Math.round(100*countO/streetsCount);
 	pourcentP = Math.round(100*(countM+countF)/streetsCount);
 	pourcentM = Math.round(100*countM/streetsCount);
-	pourcentF = Math.round(100*countF/streetsCount);
-
-	loaderRightNumber(targetO, 2, pourcentO.toString());
-	loaderRightNumber(targetP, 2, pourcentP.toString());
-	loaderRightNumber(targetM, 2, pourcentM.toString());
-	loaderRightNumber(targetF, 2, pourcentF.toString());	
+	pourcentF = Math.round(100*countF/streetsCount)
 
 	console.log("Femmes : " + pourcentF + "%")
 	console.log("Other : " + pourcentO + "%")
@@ -140,10 +133,16 @@ async function countGenre(streets) {
 /*---------------------------------*/
 
 export async function main() {
-	let streets = await getStreetArray(queryRequest);
-	//Attends la requete API et mets le tableau de rue uniques dans streets
-	loaderRightNumber(targetStreets, streetsCountStr.length, streetsCountStr);
-	return await countGenre(streets);
+	return getStreetArray(queryRequest)
+		.then((streets) => {
+			loaderRightNumber(targetStreets, streetsCount.toString().length, streetsCount.toString());
+			return countGenre(streets);
+		})
+		.catch((error) => {
+			console.error('An error occurred in getStreetArray:', error);
+			// Gérer l'erreur et retourner une valeur par défaut
+			return { pourcentO: 0, pourcentP: 0, pourcentM: 0, pourcentF: 0 };
+		});
 }
 
 /*---------------------------------*/
@@ -203,7 +202,7 @@ function loaderWelcome(target, count, string) {
 			clearInterval(interval);
 		}
 		iterations += 1/2; 
-	}, 30);
+	}, 50);
 }
 
 function loaderAll() {
@@ -211,7 +210,7 @@ function loaderAll() {
 	loaderGlobal(targetO, 2);
 	loaderGlobal(targetP, 2);
 	loaderGlobal(targetM, 2);
-	loaderGlobal(targetF, 1);
+	loaderGlobal(targetF, 2);
 	loaderWelcome(targetWelcome, welcomeMsg.length, welcomeMsg);
 }
 
@@ -225,7 +224,7 @@ targetWelcome.onmouseover = event => {
 }
 
 targetStreets.onmouseover = event => {
-	loaderRightNumber(event.target, streetsCountStr.toString().length, streetsCountStr);
+	loaderRightNumber(event.target, streetsCount.toString().length, streetsCount.toString());
 }
 
 targetO.onmouseover = event => {
