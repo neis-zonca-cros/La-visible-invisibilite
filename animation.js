@@ -17,8 +17,8 @@ async function printRandomCircles(pourcent, divRond, containerRond) {
         rondGx.classList.add(divRond);
         document.querySelector(containerRond).appendChild(rondGx);
 
-        var pos_x = Math.round(Math.random()*(screen.width - 50));
-        var pos_y = Math.round(Math.random()*400);
+        var pos_x = Math.round(Math.random()* screen.width);
+        var pos_y = Math.round(Math.random()* 400);
 
         document.getElementById(divRond + i).style.left = pos_x + "px";
         document.getElementById(divRond + i).style.top = pos_y + "px"; 
